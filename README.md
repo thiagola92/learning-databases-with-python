@@ -9,9 +9,18 @@ Os bancos de dados utilizados foram montados utilizando Docker.
 ## Mongo
 `sudo docker pull mongo`  
 `sudo docker network create mongo_network`  
-`sudo docker run --name="mongo" --network="mongo_network" --detach mongo`
+`sudo docker run --name="mongo" --network="mongo_network" --detach mongo`  
+
+### Obtendo ip
+`sudo docker inspect mongo | grep "IPAddress"`  
 
 ## Elasticsearch
 `sudo docker pull elasticsearch:7.5.1`  
 `sudo docker network create elasticsearch_network`  
 `sudo docker run --name="elasticsearch" --network="elasticsearch_network" -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" --detach elasticsearch:7.5.1`  
+
+# Text Editor
+Caso o docker não inclua editor de texto:  
+`apt update`  
+`apt install neovim`  
+`nvim file_name`  

@@ -1,7 +1,7 @@
 import psycopg2
 
-postgres = psycopg2.connect(host='127.0.0.1', dbname='postgres', user='postgres', password='postgres')
-cursor = postgres.cursor()
+database = psycopg2.connect(host='127.0.0.1', dbname='postgres', user='postgres', password='postgres')
+cursor = database.cursor()
 
 sql = """CREATE TABLE produtos(
     sku integer,
@@ -27,5 +27,5 @@ cursor.execute(sql)
 
 # important
 cursor.close()
-postgres.commit()
-postgres.close()
+database.commit()
+database.close()
