@@ -3,3 +3,6 @@ venv/
 
 # pyenv
 .python-version
+
+# big file
+trash.csv
