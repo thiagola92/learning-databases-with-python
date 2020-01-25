@@ -23,8 +23,8 @@ cursor.execute(sql)
 sql = """SELECT * FROM produtos"""
 cursor.execute(sql)
 
-products = cursor.fetchall()
-print(products)
+p = cursor.fetchone()
+print(p)
 
 # Destroy table
 sql = """DROP TABLE produtos"""

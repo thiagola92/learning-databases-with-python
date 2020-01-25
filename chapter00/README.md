@@ -9,8 +9,13 @@
 ## Elastic
 [Docker instruction](elasticsearch_study.md)  
 
+# Obtendo ip
+Docker normalmente utiliza IPs como `172.x.y.z`, para descobrir o IP do seu container utilize:  
+`sudo docker inspect CONTAINER_NAME | grep "IPAddress"`  
+
 # Text Editor
-Caso precise de um editor de texto e o docker não inclua nenhum, você terá que instalar o editor de texto de sua preferência. Por exemplo:  
+Normalmente todo container inclui o editor **Vi**, mas caso seja necessário instalar um de sua preferência utilize o package tool do sistema operacional.  
+Por exemplo:  
 `apt update`  
 `apt install neovim`  
 `nvim file_name`  

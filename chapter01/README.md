@@ -20,3 +20,5 @@ As collections só existem apartir do momento que você insere nelas algum docum
 
 # Elasticsearch
 [[Elasticsearch code](mongo_study.py)]  
+
+Pode se testar se conectou com o banco com `elasticsearch.ping()`, retorna `True` se conectou com sucesso.  
