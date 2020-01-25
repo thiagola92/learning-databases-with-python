@@ -1,13 +1,13 @@
 # Docker
 
 ## Postgres
-[Postgres instruction](postgres.md)  
+[Postgres instruction](postgres_study.md)  
 
 ## MongoDB
-[Docker instruction](mongodb.md)  
+[Docker instruction](mongodb_study.md)  
 
 ## Elastic
-[Docker instruction](elasticsearch.md)  
+[Docker instruction](elasticsearch_study.md)  
 
 # Text Editor
 Caso precise de um editor de texto e o docker não inclua nenhum, você terá que instalar o editor de texto de sua preferência. Por exemplo:  

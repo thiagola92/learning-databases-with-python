@@ -13,3 +13,6 @@ Os bancos de dados utilizados foram montados utilizando Docker.
       * Ler informação
       * Deletar o banco
   
+# Observation
+O nome dos arquivos terminam com `_study` para não dar conflito no import das bibliotecas.  
+Ex: `import elasticsearch` precisa importar a biblioteca em vez de um arquivo chamado `elasticsearch.py`  
