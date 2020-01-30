@@ -1,3 +1,6 @@
+# AutoPackage
+AutoPackage é uma classe minha criada justamente para armazenar uma quantidade de item antes de envia-los, ela apenas recebe a função responsável por enviar o lote que ela está armazenando no momento.  
+
 # MongoDB
 | 1       | 1000    | speed up |
 | ------- | ------- | -------- |
@@ -15,7 +18,7 @@
 
 # Information
 * Computer
-  * **Memory**: 15,5GiB  
+  * **Memory**: 15,5GiB (~8GB x2)  
   * **CPU**: Intel Core i5-7600K @ 3.80GHz x 4  
 * File
   **Size**: 1,9GB  
