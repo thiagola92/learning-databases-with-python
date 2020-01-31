@@ -9,12 +9,12 @@ Como já vimos como botar os dados no banco, os códigos vão partir do princíp
 # Elasticsearch to
 | Postgres | MongoDB |
 | -------- | ------- |
-|  |  |
+| 0:02:00  |  |
 
 # Postgres to
 | Elasticsearch | MongoDB |
 | ------------- | ------- |
-| 0:12:27 |  |
+| 0:12:27       | 0:00:49 |
 
 # Information
 * Computer

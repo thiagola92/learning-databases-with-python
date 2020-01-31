@@ -21,7 +21,6 @@ with open('trash.csv') as file:
     )"""
     cursor.execute(sql)
 
-
 sql = """SELECT * FROM postgres LIMIT 1"""
 cursor.execute(sql)
 p = cursor.fetchone()

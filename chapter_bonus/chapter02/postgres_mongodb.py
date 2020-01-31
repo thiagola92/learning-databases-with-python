@@ -1,6 +1,8 @@
 import psycopg2
 import psycopg2.extras
 
+import pymongo
+
 from datetime import datetime
 from auto_package import AutoPackage
 
