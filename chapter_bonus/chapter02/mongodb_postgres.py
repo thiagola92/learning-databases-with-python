@@ -30,8 +30,8 @@ def send(package):
 
 auto_package = AutoPackage(send=send, size=1000)
 
-for i in mongo_collection.find({}):
-  auto_package.add((i['name'], i['description']))
+for item in mongo_collection.find({}):
+  auto_package.add((item['name'], item['description']))
 
 cursor.execute("""SELECT * FROM postgres LIMIT 1""")
 p = cursor.fetchone()
