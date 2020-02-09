@@ -34,6 +34,8 @@ for item in mongo_collection.find({}):
     }
   })
   i += 1
+  
+auto_package.send_package()
 
 p = elasticsearch_client.get(index='elastic_destiny', doc_type='type', id=1)
 print(p)

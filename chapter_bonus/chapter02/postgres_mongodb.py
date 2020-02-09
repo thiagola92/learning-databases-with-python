@@ -29,6 +29,8 @@ while many:
       'description': description
     })
   many = cursor.fetchmany(1000)
+  
+auto_package.send_package()
 
 for i in mongo_collection.find({}).limit(1):
     print(i)

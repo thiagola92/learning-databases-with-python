@@ -38,6 +38,8 @@ while many:
     })
     i += 1
   many = cursor.fetchmany(1000)
+  
+auto_package.send_package()
 
 p = elasticsearch_client.get(index='elastic_destiny', doc_type='type', id=1)
 print(p)

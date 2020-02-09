@@ -32,6 +32,8 @@ auto_package = AutoPackage(send=send, size=1000)
 
 for item in mongo_collection.find({}):
   auto_package.add((item['name'], item['description']))
+  
+auto_package.send_package()
 
 cursor.execute("""SELECT * FROM postgres_destiny LIMIT 1""")
 p = cursor.fetchone()

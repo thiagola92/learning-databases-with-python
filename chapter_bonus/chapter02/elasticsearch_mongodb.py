@@ -36,6 +36,8 @@ while len(response['hits']['hits']) > 0:
     })
   
   response = elasticsearch_client.scroll(scroll_id=response['_scroll_id'], scroll='10m')
+  
+auto_package.send_package()
 
 for i in mongo_collection.find({}).limit(1):
     print(i)

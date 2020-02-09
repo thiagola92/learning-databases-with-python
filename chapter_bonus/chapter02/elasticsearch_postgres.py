@@ -43,6 +43,8 @@ while len(response['hits']['hits']) > 0:
     auto_package.add((item['_source']['name'], item['_source']['description']))
   
   response = elasticsearch_client.scroll(scroll_id=response['_scroll_id'], scroll='10m')
+  
+auto_package.send_package()
 
 cursor.execute("""SELECT * FROM postgres_destiny LIMIT 1""")
 p = cursor.fetchone()
