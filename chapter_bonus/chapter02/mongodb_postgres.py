@@ -22,7 +22,7 @@ sql = """CREATE TABLE postgres_destiny(
 cursor.execute(sql)
 
 def send(package):
-  sql = """INSERT INTO postgres
+  sql = """INSERT INTO postgres_destiny
       VALUES(%s, %s
   )"""
 
@@ -33,7 +33,7 @@ auto_package = AutoPackage(send=send, size=1000)
 for item in mongo_collection.find({}):
   auto_package.add((item['name'], item['description']))
 
-cursor.execute("""SELECT * FROM postgres LIMIT 1""")
+cursor.execute("""SELECT * FROM postgres_destiny LIMIT 1""")
 p = cursor.fetchone()
 print(p)
 
