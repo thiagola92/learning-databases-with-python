@@ -20,13 +20,13 @@ def random_description(words=20):
     return description
 
 def random_line():
-    line = "\n"
 
     name_length = random.randrange(4, 8)
     description_length = random.randrange(15, 500)
 
     line = line + random_text(name_length) + ","
     line = line + random_description(description_length)
+    line = line + "\n"
 
     return line
 
