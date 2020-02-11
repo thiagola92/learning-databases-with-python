@@ -24,14 +24,15 @@ def random_line():
     name_length = random.randrange(4, 8)
     description_length = random.randrange(15, 500)
 
+    line = ""
     line = line + random_text(name_length) + ","
     line = line + random_description(description_length)
     line = line + "\n"
 
     return line
 
-with open('big_file', 'a') as file:
-    # file.write('name,description')
+with open('trash.csv', 'a') as file:
+    file.write('name, description\n')
 
-    for i in range(100000):
+    for i in range(1500000):
         file.write(random_line())

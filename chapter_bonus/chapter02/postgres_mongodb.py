@@ -32,8 +32,7 @@ while many:
   
 auto_package.send_package()
 
-for i in mongo_collection.find({}).limit(1):
-    print(i)
+print(mongo_collection.find({}).count())
 
 mongo_client.drop_database('mongo_destiny')
 

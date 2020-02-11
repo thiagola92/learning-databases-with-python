@@ -31,8 +31,7 @@ with open('trash.csv') as file:
     })
     i += 1
 
-p = elasticsearch_client.get(index='elastic', doc_type='type', id=1)
-print(p)
+print(elasticsearch_client.count(index='elastic', doc_type='type'))
 
 elasticsearch_client.indices.delete('elastic')
 

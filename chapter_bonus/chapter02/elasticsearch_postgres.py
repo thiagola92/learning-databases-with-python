@@ -46,9 +46,9 @@ while len(response['hits']['hits']) > 0:
   
 auto_package.send_package()
 
-cursor.execute("""SELECT * FROM postgres_destiny LIMIT 1""")
-p = cursor.fetchone()
-print(p)
+sql = """SELECT COUNT(*) FROM postgres"""
+cursor.execute(sql)
+print(cursor.fetchone())
 
 sql = """DROP TABLE postgres_destiny"""
 cursor.execute(sql)

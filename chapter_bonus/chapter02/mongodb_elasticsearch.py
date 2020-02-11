@@ -37,8 +37,7 @@ for item in mongo_collection.find({}):
   
 auto_package.send_package()
 
-p = elasticsearch_client.get(index='elastic_destiny', doc_type='type', id=1)
-print(p)
+print(elasticsearch_client.count(index='elastic', doc_type='type'))
 
 elasticsearch_client.indices.delete('elastic_destiny')
 

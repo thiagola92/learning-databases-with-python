@@ -1,5 +1,13 @@
 # Requirement
-Como já vimos como botar os dados no banco, os códigos vão partir do princípio que você já tem no banco de origem os dados e apenas quer move-los para o banco destino.   
+Como já vimos como botar os dados no banco, os códigos vão partir do princípio que você já tem no banco de origem os dados e apenas quer move-los para o banco destino.  
+
+# AutoPackage
+AutoPackage é uma classe minha criada justamente para armazenar uma quantidade de item antes de envia-los, ela apenas recebe a função responsável por enviar o lote que ela está armazenando no momento.  
+
+# Warning
+Eu **não** executei diversas vezes e fiz uma média para ter uma boa aproximação do tempo que demora.  
+Eu **não** reservei o computador apenas para está tarefa.  
+Por isto não considere estes tempos como certos, apenas servem para dar uma idéia.  
 
 # MongoDB to
 | Elasticsearch | Postgres |
@@ -17,13 +25,12 @@ Como já vimos como botar os dados no banco, os códigos vão partir do princíp
 | 0:13:02       | 0:00:58 |
 
 # Information
-* Computer
-  * **Memory**: 15,5GiB (~8GB x2)  
-  * **CPU**: Intel Core i5-7600K @ 3.80GHz x 4  
-* File
-  **Size**: 1,9GB  
+* **Operating System**: Ubuntu 19.10  
+* **Memory**: (2x) 8GB 2400MHz  
+* **CPU**: Intel Core i5-7600K @ 3.80GHz x 4  
+* **HD**: 1TB 7200RPM SATA 6Gb/S 64MB  
+* **File Size**: 2,1GB  
+* **Database**: Docker Local  
 * Columns
   * **name**: Conjunto aleatório de caracteres, ou seja, texto aleatório  
   * **description**: Conjunto de textos aleatórios  
-* Database
-  * Local

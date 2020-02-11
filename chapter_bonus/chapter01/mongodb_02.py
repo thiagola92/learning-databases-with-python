@@ -22,8 +22,7 @@ with open('trash.csv') as file:
       'description': description
     })
 
-for i in mongo_collection.find({}).limit(1):
-    print(i)
+print(mongo_collection.find({}).count())
 
 mongo_client.drop_database('mongo')
 

@@ -29,10 +29,9 @@ with open('trash.csv') as file:
     name, description = line.split(',')
     auto_package.add((name, description))
 
-sql = """SELECT * FROM postgres LIMIT 1"""
+sql = """SELECT COUNT(*) FROM postgres"""
 cursor.execute(sql)
-p = cursor.fetchone()
-print(p)
+print(cursor.fetchone())
 
 sql = """DROP TABLE postgres"""
 cursor.execute(sql)
