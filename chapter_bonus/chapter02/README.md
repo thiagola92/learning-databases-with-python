@@ -12,17 +12,17 @@ Por isto n√£o considere estes tempos como certos, apenas servem para dar uma id√
 # MongoDB to
 | Elasticsearch | Postgres |
 | ------------- | -------- |
-| 0:13:19       | 0:01:30  |
+| 0:13:05       | 0:02:21  |
 
 # Elasticsearch to
 | Postgres | MongoDB |
 | -------- | ------- |
-| 0:02:05  | 0:01:10 |
+| 0:02:52  | 0:01:42 |
 
 # Postgres to
 | Elasticsearch | MongoDB |
 | ------------- | ------- |
-| 0:13:02       | 0:00:58 |
+| 0:13:13       | 0:01:06 |
 
 # Information
 * **Operating System**: Ubuntu 19.10  
