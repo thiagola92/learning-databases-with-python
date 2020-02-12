@@ -7,19 +7,19 @@ Eu **não** reservei o computador apenas para está tarefa.
 Por isto não considere estes tempos como certos, apenas servem para dar uma idéia.  
 
 # MongoDB
-| 1       | 1000    | speed up |
-| ------- | ------- | -------- |
-| 0:05:29 | 0:01:44 | 78%      |
+| 1       | 1000    |
+| ------- | ------- |
+| 0:05:29 | 0:01:44 |
 
 # Elasticsearch
-| 1       | 1000    | speed up |
-| ------- | ------- | -------- |
-| 4:28:17 | 0:14:01 | 94%      |
+| 1       | 1000    |
+| ------- | ------- |
+| 4:28:17 | 0:14:01 |
 
 # Postgres
-| 1       | 1000    | speed up |
-| ------- | ------- | -------- |
-| 0:02:53 | 0:02:38 | 18%      |
+| 1       | 1000    |
+| ------- | ------- |
+| 0:02:53 | 0:02:38 |
 
 # Information
 * **Operating System**: Ubuntu 19.10  
