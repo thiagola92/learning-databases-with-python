@@ -39,8 +39,9 @@ while len(response['hits']['hits']) > 0:
   
 auto_package.send_package()
 
-print(mongo_collection.find({}).count())
+print(mongo_collection.count_documents({}))
 
+mongo_collection.drop()
 mongo_client.drop_database('mongo_destiny')
 
 print(datetime.now() - start)

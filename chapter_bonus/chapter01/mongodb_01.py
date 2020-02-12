@@ -16,8 +16,9 @@ with open('trash.csv') as file:
       'description': description
     })
 
-print(mongo_collection.find({}).count())
+print(mongo_collection.count_documents({}))
 
+mongo_collection.drop()
 mongo_client.drop_database('mongo')
 
 print(datetime.now() - start)

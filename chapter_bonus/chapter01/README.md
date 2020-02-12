@@ -9,17 +9,17 @@ Por isto n√£o considere estes tempos como certos, apenas servem para dar uma id√
 # MongoDB
 | 1       | 1000    | speed up |
 | ------- | ------- | -------- |
-| 0:06:14 | 0:01:22 | 78%      |
+| 0:05:29 | 0:01:44 | 78%      |
 
 # Elasticsearch
 | 1       | 1000    | speed up |
 | ------- | ------- | -------- |
-| 3:47:50 | 0:11:59 | 94%      |
+| 4:28:17 | 0:14:01 | 94%      |
 
 # Postgres
 | 1       | 1000    | speed up |
 | ------- | ------- | -------- |
-| 0:02:39 | 0:02:09 | 18%      |
+| 0:02:53 | 0:02:38 | 18%      |
 
 # Information
 * **Operating System**: Ubuntu 19.10  
