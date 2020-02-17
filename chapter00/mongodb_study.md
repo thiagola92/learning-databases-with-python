@@ -1,12 +1,11 @@
 # MongoDB
-`sudo docker pull mongo`  
-`sudo docker network create mongo_network`  
-`sudo docker run --name="mongo" --network="mongo_network" --detach mongo`  
+* `sudo docker pull mongo`  
+* `sudo docker network create mongo_network`  
+* `sudo docker run --name="mongo" --network="mongo_network" --detach mongo`  
 
 # Error
-Erros com os quais esbarrei durante o aprendizado  
 
-## Banco não inicializava
+## Banco não inicializa
 O comando `sudo docker start -i mongo` retornava:  
 
 ```bash

@@ -8,3 +8,5 @@ Eles não seguem uma lógica de aprendizado, apenas são casos interessantes.
   * Inserção de grande quantidade de dados no banco
 * [Capítulo 2](chapter02/)
   * Movimentação de grande quantidade de dados entre bancos
+* [Capítulo 3](chapter03/)
+  * Visualização do banco (GUI)
