@@ -1,4 +1,5 @@
 # Docker
+Escolha o banco o qual está interessado e monte o container dele
 
 ## Postgres
 [Postgres instruction](postgres_study.md)  
@@ -8,6 +9,11 @@
 
 ## Elastic
 [Docker instruction](elasticsearch_study.md)  
+
+# Docker-compose
+Caso esteja interessado em mais que um, utilize o docker-compose para monta-los e liga-los.  
+
+[Docker-compose](docker-compose.md)
 
 # Obtendo ip
 Docker normalmente utiliza IPs como `172.x.y.z`, para descobrir o IP do seu container utilize:  
