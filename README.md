@@ -14,15 +14,17 @@ Os bancos de dados utilizados foram montados utilizando Docker.
     * Ler informação
     * Deletar o banco
 * [Capítulo 2](chapter02/)
-  * Upsert
-    * Update if exist
-    * Insert if doesn't exist
-* [Capítulo 3](chapter03/)
-  * Inserção de grande quantidade de dados no banco
-* [Capítulo 4](chapter04/)
-  * Movimentação de grande quantidade de dados entre bancos
-* [Capítulo 5](chapter05/)
   * Visualização do banco (GUI)
+* [Capítulo 3](chapter03/)
+  * Atualizar um item do banco
+* [Capítulo 4](chapter04/)
+  * Upsert (update + insert)
+    * Atualizar item se ele existir
+    * Inserir item se ele não existir
+* [Capítulo 13](chapter13/)
+  * Inserção de grande quantidade de dados no banco
+* [Capítulo 14](chapter14/)
+  * Movimentação de grande quantidade de dados entre bancos
   
 # Observation
 O nome dos arquivos terminam com `_study` para não dar conflito no import das bibliotecas.  

@@ -11,9 +11,9 @@ Escolha o banco o qual está interessado e monte o container dele
 [Docker instruction](elasticsearch_study.md)  
 
 # Docker-compose
-Caso esteja interessado em mais que um, utilize o docker-compose para monta-los e liga-los.  
+Caso esteja interessado em mais que um, você pode utilizar o docker-compose para monta-los.  
 
-[Docker-compose](docker-compose.md)
+Baixe o arquivo [docker-compose.yaml](docker-compose.yaml), execute o comando `sudo docker-compose up` no mesmo diretório que o arquivo.  
 
 # Obtendo ip
 Docker normalmente utiliza IPs como `172.x.y.z`, para descobrir o IP do seu container utilize:  

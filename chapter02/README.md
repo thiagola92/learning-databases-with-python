@@ -1,14 +1,12 @@
-upsert
+# Docker
+Diferente bancos utilizam diferentes ferramentas para auxiliar visualmente.  
+Escolhi sempre utilizar ferramentas parcialmente/totalmente free e que possuem um imagem docker (por segurança).  
 
-```python
-try:
-  collection.insert_many(package, ordered=False)
-except errors.BulkWriteError as e:
-  print(f'One or more products already exist')
-```
+## Postgres
+[Pgadmin instruction](postgres_study.md)  
 
-Para evitar que produtos com o mesmo id sejam adicionados ao mongo é preciso definir um index.  
+## MongoDB
+[Mongo-express instruction](mongo_study.md)
 
-```
-db.collection_name.createIndex({"id_produto": 1}, {unique: true})
-```
+## Elastic
+[Kibana instruction](elasticsearch_study.md)  
