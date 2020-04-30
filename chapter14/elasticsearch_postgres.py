@@ -28,15 +28,17 @@ def send(package):
 
 auto_package = AutoPackage(send=send, size=1000)
 
-response = elasticsearch_client.search(index='elastic',
-                                      doc_type='type',
-                                      body= {
-                                        'query': {
-                                          'match_all': {}
-                                        },
-                                        'size': 1000
-                                      },
-                                      scroll='10m')
+response = elasticsearch_client.search(
+  index='elastic',
+  doc_type='type',
+  body= {
+    'query': {
+      'match_all': {}
+    },
+    'size': 1000
+  },
+  scroll='10m'
+)
 
 while len(response['hits']['hits']) > 0:
   for item in response['hits']['hits']:
