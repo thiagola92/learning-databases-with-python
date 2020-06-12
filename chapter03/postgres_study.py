@@ -1,6 +1,7 @@
 import psycopg2
 
 database = psycopg2.connect(host='127.0.0.1', dbname='postgres', user='postgres', password='postgres')
+# database = psycopg2.connect("postgres://postgres:postgres@35.196.114.88/postgres") # Using URI
 cursor = database.cursor()
 
 sql = """CREATE TABLE produtos(

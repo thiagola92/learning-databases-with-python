@@ -1,6 +1,7 @@
 from elasticsearch import Elasticsearch
 
 elasticsearch = Elasticsearch([{'host': '172.18.0.2', 'port': 9200}, {'host': '172.18.0.2', 'port': 9300}])
+# elasticsearch = Elasticsearch("http://172.18.0.4:9200") # Using URL
 
 elasticsearch.indices.create('elastic')
 
