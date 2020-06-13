@@ -8,9 +8,9 @@ from auto_package import AutoPackage
 
 start = datetime.now()
 
-elasticsearch_client = elasticsearch.Elasticsearch([{'host': '172.20.0.2', 'port': 9200}, {'host': '172.20.0.2', 'port': 9300}])
+elasticsearch = Elasticsearch("http://username:password@172.18.0.4:9200")
 
-database = psycopg2.connect(host='127.0.0.1', dbname='postgres', user='postgres', password='postgres')
+database = psycopg2.connect("postgres://username:password@172.18.0.3/postgres")
 cursor = database.cursor()
 
 sql = """CREATE TABLE postgres_destiny(

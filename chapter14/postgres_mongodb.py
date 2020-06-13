@@ -8,10 +8,10 @@ from auto_package import AutoPackage
 
 start = datetime.now()
 
-database = psycopg2.connect(host='127.0.0.1', dbname='postgres', user='postgres', password='postgres')
+database = psycopg2.connect("postgres://username:password@172.18.0.3/postgres")
 cursor = database.cursor()
 
-mongo_client = pymongo.MongoClient(host='172.19.0.2', port=27017)
+client = MongoClient("mongodb://username:password@172.18.0.2")
 mongo_database = mongo_client['mongo_destiny']
 mongo_collection = mongo_database['collection']
 

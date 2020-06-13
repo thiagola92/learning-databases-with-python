@@ -4,7 +4,7 @@ from datetime import datetime
 
 start = datetime.now()
 
-elasticsearch_client = elasticsearch.Elasticsearch([{'host': '172.20.0.2', 'port': 9200}, {'host': '172.20.0.2', 'port': 9300}])
+elasticsearch = Elasticsearch("http://username:password@172.18.0.4:9200")
 
 elasticsearch_client.indices.create('elastic')
 

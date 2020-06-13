@@ -8,11 +8,11 @@ from auto_package import AutoPackage
 
 start = datetime.now()
 
-mongo_client = pymongo.MongoClient(host='172.19.0.2', port=27017)
+client = MongoClient("mongodb://username:password@172.18.0.2")
 mongo_database = mongo_client['mongo']
 mongo_collection = mongo_database['collection']
 
-elasticsearch_client = elasticsearch.Elasticsearch([{'host': '172.20.0.2', 'port': 9200}, {'host': '172.20.0.2', 'port': 9300}])
+elasticsearch = Elasticsearch("http://username:password@172.18.0.4:9200")
 
 elasticsearch_client.indices.create('elastic_destiny')
 

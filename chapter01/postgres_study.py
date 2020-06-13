@@ -1,7 +1,7 @@
 import psycopg2
 
 # Connect to database
-database = psycopg2.connect(host='127.0.0.1', dbname='postgres', user='postgres', password='postgres')
+database = psycopg2.connect("postgres://username:password@172.18.0.3/postgres")
 cursor = database.cursor()
 
 # Create table

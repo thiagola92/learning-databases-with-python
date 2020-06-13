@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 
 # Connect to database
-client = MongoClient(host='172.19.0.2', port=27017)
+client = MongoClient("mongodb://username:password@172.18.0.2")
 database = client['mongo']
 collection = database['produtos']
 

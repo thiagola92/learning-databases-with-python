@@ -18,10 +18,3 @@ Baixe o arquivo [docker-compose.yaml](docker-compose.yaml), execute o comando `s
 # Obtendo ip
 Docker normalmente utiliza IPs como `172.x.y.z`, para descobrir o IP do seu container utilize:  
 `sudo docker inspect CONTAINER_NAME | grep "IPAddress"`  
-
-# Text Editor
-Normalmente todo container inclui o editor **Vi**, mas caso seja necessário instalar um de sua preferência utilize o package tool do sistema operacional.  
-Por exemplo:  
-`apt update`  
-`apt install neovim`  
-`nvim file_name`  

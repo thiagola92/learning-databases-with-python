@@ -1,7 +1,6 @@
 from pymongo import MongoClient
 
-client = MongoClient(host='172.18.0.3', port=27017)
-# client = MongoClient("mongodb://172.18.0.2/admin?ssl=false") # Using URI
+client = MongoClient("mongodb://username:password@172.18.0.2")
 database = client['mongo']
 collection = database['produtos']
 
