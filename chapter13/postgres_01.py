@@ -4,29 +4,31 @@ from datetime import datetime
 
 start = datetime.now()
 
-database = psycopg2.connect("postgres://username:password@172.18.0.3/postgres")
+database = psycopg2.connect("postgres://username:password@127.0.0.1")
 cursor = database.cursor()
 
-sql = """CREATE TABLE postgres(
-  name text,
-  description text
-)"""
-cursor.execute(sql)
+cursor.execute("""
+  CREATE TABLE table_name(
+    name text,
+    description text
+  )
+""")
 
-with open('trash.csv') as file:
+with open('utils/trash.csv') as file:
   for line in file.readlines():
     name, description = line.split(',')
-    sql = f"""INSERT INTO postgres
-      VALUES('{name}', '{description}'
-    )"""
-    cursor.execute(sql)
 
-sql = """SELECT COUNT(*) FROM postgres"""
-cursor.execute(sql)
+    cursor.execute(f"""
+      INSERT INTO table_name
+        VALUES('{name}', '{description}')
+    """)
+
+    database.commit()
+
+cursor.execute("""SELECT COUNT(*) FROM table_name""")
 print(cursor.fetchone())
 
-sql = """DROP TABLE postgres"""
-cursor.execute(sql)
+cursor.execute("""DROP TABLE table_name""")
 
 cursor.close()
 database.commit()

@@ -1,49 +1,39 @@
-import elasticsearch
-
-import pymongo
-
+from pymongo import MongoClient
 from datetime import datetime
-from auto_package import AutoPackage
+from elasticsearch import Elasticsearch
 
 start = datetime.now()
 
-elasticsearch = Elasticsearch("http://username:password@172.18.0.4:9200")
+elasticsearch_client = Elasticsearch("http://username:password@127.0.0.1:9200")
+mongo_client = MongoClient("mongodb://username:password@127.0.0.1")
 
-client = MongoClient("mongodb://username:password@172.18.0.2")
-mongo_database = mongo_client['mongo_destiny']
-mongo_collection = mongo_database['collection']
-
-def send(package):
-  mongo_collection.insert_many(package)
-
-auto_package = AutoPackage(send=send, size=1000)
+database = mongo_client['database_name']
+collection = database['collection_name']
 
 response = elasticsearch_client.search(
-  index='elastic',
-  doc_type='type',
+  index='index_name',
   body= {
     'query': {
       'match_all': {}
     },
-    'size': 1000
+    'size': 10000
   },
   scroll='10m'
 )
 
 while len(response['hits']['hits']) > 0:
-  for item in response['hits']['hits']:
-    auto_package.add({
+  package = [{
       'name': item['_source']['name'],
       'description': item['_source']['description']
-    })
+  } for item in response['hits']['hits']]
+
+  collection.insert_many(package)
   
   response = elasticsearch_client.scroll(scroll_id=response['_scroll_id'], scroll='10m')
-  
-auto_package.send_package()
 
-print(mongo_collection.count_documents({}))
+print(collection.count_documents({}))
 
-mongo_collection.drop()
-mongo_client.drop_database('mongo_destiny')
+collection.drop()
+mongo_client.drop_database('database_name')
 
 print(datetime.now() - start)

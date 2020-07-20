@@ -1,36 +1,33 @@
 import psycopg2
 
 # Connect to database
-database = psycopg2.connect("postgres://username:password@172.18.0.3/postgres")
-cursor = database.cursor()
+client = psycopg2.connect("postgres://username:password@127.0.0.1")
+cursor = client.cursor()
 
 # Create table
-sql = """CREATE TABLE produtos(
+cursor.execute("""
+  CREATE TABLE table_name(
     sku integer,
     name varchar(255),
     description text,
     category varchar(255)
-)"""
-cursor.execute(sql)
+  )
+""")
 
 # Insert information
-sql = """INSERT INTO produtos
-    VALUES(134218478, 'Rb-01 - Robô Aspirador De Pó Fast Clean Bivolt - Mondial', 'Use a tecnologia a seu favor para aproveitar a vida longe da faxina. Com o Robô Aspirador de Pó Fast Clean RB-01 da Mondial, sua casa fica limpa sem que você precise manusear o aparelho. Esse modelo consegue varrer, aspirar e limpar diversos tipos de superfícies ao circular sozinho pelo ambiente. Tudo isso sem danificar paredes ou móveis. Graças aos seus sensores inteligentes, ele consegue desviar de obstáculos e até mesmo evitar possíveis quedas. Conheça mais essa facilidade para o seu lar e deixe tuuuudo limpinho :)', 'eletroportáteis'
-)"""
-cursor.execute(sql)
+cursor.execute("""
+  INSERT INTO table_name
+    VALUES(134218478, 'Rb-01 - Robô Aspirador De Pó Fast Clean Bivolt - Mondial', 'Use a tecnologia a seu favor para aproveitar a vida longe da faxina. Com o Robô Aspirador de Pó Fast Clean RB-01 da Mondial, sua casa fica limpa sem que você precise manusear o aparelho. Esse modelo consegue varrer, aspirar e limpar diversos tipos de superfícies ao circular sozinho pelo ambiente. Tudo isso sem danificar paredes ou móveis. Graças aos seus sensores inteligentes, ele consegue desviar de obstáculos e até mesmo evitar possíveis quedas. Conheça mais essa facilidade para o seu lar e deixe tuuuudo limpinho :)', 'eletroportáteis')
+""")
 
 # Query information
-sql = """SELECT * FROM produtos"""
-cursor.execute(sql)
-
-p = cursor.fetchone()
-print(p)
+cursor.execute("""SELECT * FROM table_name""")
+print(cursor.fetchone())
 
 # Destroy table
-sql = """DROP TABLE produtos"""
-cursor.execute(sql)
+cursor.execute("""DROP TABLE table_name""")
 
 # Close connection (important)
 cursor.close()
-database.commit()
-database.close()
+client.commit()
+client.close()

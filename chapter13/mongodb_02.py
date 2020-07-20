@@ -1,30 +1,33 @@
-import pymongo
-
+from pymongo import MongoClient
 from datetime import datetime
-from auto_package import AutoPackage
 
 start = datetime.now()
 
-client = MongoClient("mongodb://username:password@172.18.0.2")
-mongo_database = mongo_client['mongo']
-mongo_collection = mongo_database['collection']
+client = MongoClient("mongodb://username:password@127.0.0.1")
+database = client['database_name']
+collection = database['collection_name']
 
-def send(package):
-  mongo_collection.insert_many(package)
+package = []
 
-auto_package = AutoPackage(send=send, size=1000)
-
-with open('trash.csv') as file:
+with open('utils/trash.csv') as file:
   for line in file.readlines():
     name, description = line.split(',')
-    auto_package.add({
+
+    package.append({
       'name': name,
       'description': description
     })
 
-print(mongo_collection.count_documents({}))
+    if len(package) >= 10000:
+      collection.insert_many(package)
+      package.clear()
 
-mongo_collection.drop()
-mongo_client.drop_database('mongo')
+if package:
+  collection.insert_many(package)
+
+print(collection.count_documents({}))
+
+collection.drop()
+client.drop_database('mongo')
 
 print(datetime.now() - start)

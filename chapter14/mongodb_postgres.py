@@ -1,49 +1,47 @@
-import pymongo
-
 import psycopg2
 import psycopg2.extras
-
+from pymongo import MongoClient
 from datetime import datetime
-from auto_package import AutoPackage
 
 start = datetime.now()
 
-client = MongoClient("mongodb://username:password@172.18.0.2")
-mongo_database = mongo_client['mongo']
-mongo_collection = mongo_database['collection']
+mongo_client = MongoClient("mongodb://username:password@127.0.0.1")
+postgres_client = psycopg2.connect("postgres://username:password@127.0.0.1")
 
-database = psycopg2.connect("postgres://username:password@172.18.0.3/postgres")
-cursor = database.cursor()
+cursor = postgres_client.cursor()
+database = mongo_client['database_name']
+collection = database['collection_name']
 
-sql = """CREATE TABLE postgres_destiny(
+cursor.execute("""
+  CREATE TABLE table_name(
     name text,
     description text
-)"""
-cursor.execute(sql)
+  )
+""")
 
-def send(package):
-  sql = """INSERT INTO postgres_destiny
-      VALUES(%s, %s
-  )"""
+package = []
+insert_sql = """
+  INSERT INTO table_name
+    VALUES(%s, %s)
+"""
 
-  psycopg2.extras.execute_batch(cursor, sql, package, page_size=len(package))
+for item in collection.find({}):
+  package.append((item['name'], item['description']))
 
-auto_package = AutoPackage(send=send, size=1000)
-
-for item in mongo_collection.find({}):
-  auto_package.add((item['name'], item['description']))
+  if len(package) >= 10000:
+    psycopg2.extras.execute_batch(cursor, insert_sql, package, page_size=len(package))
+    package.clear()
   
-auto_package.send_package()
+if package:
+  psycopg2.extras.execute_batch(cursor, insert_sql, package, page_size=len(package))
 
-sql = """SELECT COUNT(*) FROM postgres"""
-cursor.execute(sql)
+cursor.execute("""SELECT COUNT(*) FROM table_name""")
 print(cursor.fetchone())
 
-sql = """DROP TABLE postgres_destiny"""
-cursor.execute(sql)
+cursor.execute("""DROP TABLE table_name""")
 
 cursor.close()
-database.commit()
-database.close()
+postgres_client.commit()
+postgres_client.close()
 
 print(datetime.now() - start)

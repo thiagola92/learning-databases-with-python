@@ -1,43 +1,37 @@
 import psycopg2
 import psycopg2.extras
-
-import pymongo
-
+from pymongo import MongoClient
 from datetime import datetime
-from auto_package import AutoPackage
 
 start = datetime.now()
 
-database = psycopg2.connect("postgres://username:password@172.18.0.3/postgres")
-cursor = database.cursor()
+postgres_client = psycopg2.connect("postgres://username:password@127.0.0.1")
+mongo_client = MongoClient("mongodb://username:password@127.0.0.1")
 
-client = MongoClient("mongodb://username:password@172.18.0.2")
-mongo_database = mongo_client['mongo_destiny']
-mongo_collection = mongo_database['collection']
+cursor = postgres_client.cursor()
 
-def send(package):
-  mongo_collection.insert_many(package)
+database = mongo_client['database_name']
+collection = database['collection_name']
 
-auto_package = AutoPackage(send=send, size=1000)
+cursor.execute("""SELECT * FROM table_name""")
+many = cursor.fetchmany(10000)
 
-cursor.execute("""SELECT * FROM postgres""")
-many = cursor.fetchmany(1000)
 while many:
-  for name, description in many:
-    auto_package.add({
-      'name': name,
-      'description': description
-    })
-  many = cursor.fetchmany(1000)
-  
-auto_package.send_package()
+  package = [{
+    'name': name,
+    'description': description
+  } for name, description in many]
 
-print(mongo_collection.count_documents({}))
+  collection.insert_many(package)
 
-mongo_collection.drop()
-mongo_client.drop_database('mongo_destiny')
+  many = cursor.fetchmany(10000)
+
+print(collection.count_documents({}))
+
+collection.drop()
+mongo_client.drop_database('database_name')
 
 cursor.close()
-database.close()
+postgres_client.close()
 
 print(datetime.now() - start)

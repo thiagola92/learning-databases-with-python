@@ -1,38 +1,39 @@
-import elasticsearch
-
 from datetime import datetime
-from auto_package import AutoPackage
-from elasticsearch import helpers
+from elasticsearch import helpers, Elasticsearch
 
 start = datetime.now()
 
-elasticsearch = Elasticsearch("http://username:password@172.18.0.4:9200")
+client = Elasticsearch("http://username:password@127.0.0.1:9200")
 
-elasticsearch_client.indices.create('elastic')
+client.indices.create('index_name')
 
-def send(package):
-  action = [i for i in package]
-  helpers.bulk(elasticsearch_client, action)
+package = []
+_id = 0
 
-auto_package = AutoPackage(send=send, size=1000)
-
-with open('trash.csv') as file:
-  i = 0
+with open('utils/trash.csv') as file:
   for line in file.readlines():
     name, description = line.split(',')
-    auto_package.add({
-      '_index': 'elastic',
-      '_type': 'type',
-      '_id': i,
+
+    package.append({
+      '_index': 'index_name',
+      '_id': _id,
       '_source': {
         'name': name,
         'description': description
       }
     })
-    i += 1
 
-print(elasticsearch_client.count(index='elastic', doc_type='type'))
+    if len(package) >= 10000:
+      helpers.bulk(client, package, max_retries=10)
+      package.clear()
 
-elasticsearch_client.indices.delete('elastic')
+    _id += 1
+
+if package:
+  helpers.bulk(client, package, max_retries=10)
+
+print(client.count(index='index_name'))
+
+# client.indices.delete('index_name')
 
 print(datetime.now() - start)

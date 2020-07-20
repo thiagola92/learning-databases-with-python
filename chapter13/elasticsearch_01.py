@@ -1,25 +1,31 @@
-import elasticsearch
-
 from datetime import datetime
+from elasticsearch import Elasticsearch
 
 start = datetime.now()
 
-elasticsearch = Elasticsearch("http://username:password@172.18.0.4:9200")
+client = Elasticsearch("http://username:password@127.0.0.1:9200")
 
-elasticsearch_client.indices.create('elastic')
+client.indices.create('index_name')
 
-with open('trash.csv') as file:
-  i = 0
+_id = 0
+
+with open('utils/trash.csv') as file:
   for line in file.readlines():
     name, description = line.split(',')
-    elasticsearch_client.create(index='elastic', doc_type='type', id=i, body={
-      'name': name,
-      'description': description
-    })
-    i += 1
 
-print(elasticsearch_client.count(index='elastic', doc_type='type'))
+    client.create(
+      index='index_name',
+      id=_id,
+      body={
+        'name': name,
+        'description': description
+      }
+    )
 
-elasticsearch_client.indices.delete('elastic')
+    _id += 1
+
+print(client.count(index='index_name'))
+
+client.indices.delete('index_name')
 
 print(datetime.now() - start)

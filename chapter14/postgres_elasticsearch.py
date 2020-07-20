@@ -1,51 +1,46 @@
 import psycopg2
-import psycopg2.extras
-
 import elasticsearch
-from elasticsearch import helpers
-
+import psycopg2.extras
 from datetime import datetime
-from auto_package import AutoPackage
+from elasticsearch import helpers, Elasticsearch
 
 start = datetime.now()
 
-database = psycopg2.connect("postgres://username:password@172.18.0.3/postgres")
-cursor = database.cursor()
+postgres_client = psycopg2.connect("postgres://username:password@127.0.0.1")
+elasticsearch_client = Elasticsearch("http://username:password@127.0.0.1:9200")
 
-elasticsearch = Elasticsearch("http://username:password@172.18.0.4:9200")
+cursor = postgres_client.cursor()
 
-elasticsearch_client.indices.create('elastic_destiny')
+elasticsearch_client.indices.create('index_name')
 
 def send(package):
   action = [i for i in package]
   helpers.bulk(elasticsearch_client, action)
 
-auto_package = AutoPackage(send=send, size=1000)
+_id = 0
 
-cursor.execute("""SELECT * FROM postgres""")
-many = cursor.fetchmany(1000)
-i = 0
+cursor.execute("""SELECT * FROM table_name""")
+many = cursor.fetchmany(10000)
+
 while many:
-  for name, description in many:
-    auto_package.add({
-      '_index': 'elastic_destiny',
-      '_type': 'type',
-      '_id': i,
-      '_source': {
-        'name': name,
-        'description': description
-      }
-    })
-    i += 1
-  many = cursor.fetchmany(1000)
+  package = [{
+    '_index': 'index_name',
+    '_id': (_id := _id + 1),
+    '_source': {
+      'name': name,
+      'description': description
+    }
+  } for name, description in many]
+
+  helpers.bulk(elasticsearch_client, package, max_retries=10)
   
-auto_package.send_package()
+  many = cursor.fetchmany(1000)
 
-print(elasticsearch_client.count(index='elastic', doc_type='type'))
+print(elasticsearch_client.count(index='index_name'))
 
-elasticsearch_client.indices.delete('elastic_destiny')
+elasticsearch_client.indices.delete('index_name')
 
 cursor.close()
-database.close()
+postgres_client.close()
 
 print(datetime.now() - start)

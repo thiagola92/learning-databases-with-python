@@ -1,62 +1,55 @@
-import elasticsearch
-
 import psycopg2
 import psycopg2.extras
-
 from datetime import datetime
-from auto_package import AutoPackage
+from elasticsearch import Elasticsearch
 
 start = datetime.now()
 
-elasticsearch = Elasticsearch("http://username:password@172.18.0.4:9200")
+elasticsearch_client = Elasticsearch("http://username:password@127.0.0.1:9200")
+postgres_client = psycopg2.connect("postgres://username:password@127.0.0.1")
 
-database = psycopg2.connect("postgres://username:password@172.18.0.3/postgres")
-cursor = database.cursor()
+cursor = postgres_client.cursor()
 
-sql = """CREATE TABLE postgres_destiny(
+cursor.execute("""
+  CREATE TABLE table_name(
     name text,
     description text
-)"""
-cursor.execute(sql)
+  )
+""")
 
-def send(package):
-  sql = """INSERT INTO postgres_destiny
-      VALUES(%s, %s
-  )"""
-
-  psycopg2.extras.execute_batch(cursor, sql, package, page_size=len(package))
-
-auto_package = AutoPackage(send=send, size=1000)
+insert_sql = """
+  INSERT INTO table_name
+      VALUES(%s, %s)
+"""
 
 response = elasticsearch_client.search(
-  index='elastic',
-  doc_type='type',
+  index='index_name',
   body= {
     'query': {
       'match_all': {}
     },
-    'size': 1000
+    'size': 10000
   },
   scroll='10m'
 )
 
 while len(response['hits']['hits']) > 0:
-  for item in response['hits']['hits']:
-    auto_package.add((item['_source']['name'], item['_source']['description']))
+  package = [(
+      item['_source']['name'],
+      item['_source']['description']
+   ) for item in response['hits']['hits']]
+
+  psycopg2.extras.execute_batch(cursor, insert_sql, package, page_size=len(package))
   
   response = elasticsearch_client.scroll(scroll_id=response['_scroll_id'], scroll='10m')
-  
-auto_package.send_package()
 
-sql = """SELECT COUNT(*) FROM postgres"""
-cursor.execute(sql)
+cursor.execute("""SELECT COUNT(*) FROM table_name""")
 print(cursor.fetchone())
 
-sql = """DROP TABLE postgres_destiny"""
-cursor.execute(sql)
+# cursor.execute("""DROP TABLE table_name""")
 
 cursor.close()
-database.commit()
-database.close()
+postgres_client.commit()
+postgres_client.close()
 
 print(datetime.now() - start)

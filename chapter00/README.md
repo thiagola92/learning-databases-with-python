@@ -12,7 +12,6 @@ Escolha o banco o qual está interessado e monte o container dele
 
 # Docker-compose
 Caso esteja interessado em mais que um, você pode utilizar o docker-compose para monta-los.  
-
 Baixe o arquivo [docker-compose.yaml](docker-compose.yaml), execute o comando `sudo docker-compose up` no mesmo diretório que o arquivo.  
 
 # Obtendo ip

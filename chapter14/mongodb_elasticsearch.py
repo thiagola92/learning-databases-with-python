@@ -1,44 +1,39 @@
-import pymongo
-
-import elasticsearch
-from elasticsearch import helpers
-
+from pymongo import MongoClient
 from datetime import datetime
-from auto_package import AutoPackage
+from elasticsearch import helpers, Elasticsearch
 
 start = datetime.now()
 
-client = MongoClient("mongodb://username:password@172.18.0.2")
-mongo_database = mongo_client['mongo']
-mongo_collection = mongo_database['collection']
+mongo_client = MongoClient("mongodb://username:password@127.0.0.1")
+elasticsearch_client = Elasticsearch("http://username:password@127.0.0.1:9200")
 
-elasticsearch = Elasticsearch("http://username:password@172.18.0.4:9200")
+database = mongo_client['database_name']
+collection = database['collection_name']
 
-elasticsearch_client.indices.create('elastic_destiny')
+elasticsearch_client.indices.create('index_name')
 
-def send(package):
-  action = [i for i in package]
-  helpers.bulk(elasticsearch_client, action)
+package = []
+_id = 0
 
-auto_package = AutoPackage(send=send, size=1000)
-
-i = 0
-for item in mongo_collection.find({}):
-  auto_package.add({
-    '_index': 'elastic_destiny',
-    '_type': 'type',
-    '_id': i,
+for item in collection.find({}):
+  package.append({
+    '_index': 'index_name',
+    '_id': (_id := _id + 1),
     '_source': {
       'name': item['name'],
       'description': item['description']
     }
   })
-  i += 1
-  
-auto_package.send_package()
 
-print(elasticsearch_client.count(index='elastic', doc_type='type'))
+  if len(package) >= 10000:
+    helpers.bulk(elasticsearch_client, package, max_retries=10)
+    package.clear()
 
-elasticsearch_client.indices.delete('elastic_destiny')
+if package:
+  helpers.bulk(elasticsearch_client, package, max_retries=10)
+
+print(elasticsearch_client.count(index='index_name'))
+
+elasticsearch_client.indices.delete('index_name')
 
 print(datetime.now() - start)

@@ -1,4 +1,12 @@
-upsert
+# Database
+Objetivo deste capítulo é executar um simples **upsert**.  
+> Upsert = update OU insert  
+
+Se o documento já existir, então ele será atualizado.  
+Se o documento não existir, então ele será inserido.  
+
+# Mongo
+Não para esse capítulo...
 
 ```python
 try:

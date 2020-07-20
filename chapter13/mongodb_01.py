@@ -1,24 +1,23 @@
-import pymongo
-
+from pymongo import MongoClient
 from datetime import datetime
 
 start = datetime.now()
 
-client = MongoClient("mongodb://username:password@172.18.0.2")
-mongo_database = mongo_client['mongo']
-mongo_collection = mongo_database['collection']
+client = MongoClient("mongodb://username:password@127.0.0.1")
+database = client['database_name']
+collection = database['collection_name']
 
-with open('trash.csv') as file:
+with open('utils/trash.csv') as file:
   for line in file.readlines():
     name, description = line.split(',')
-    mongo_collection.insert_one({
+    collection.insert_one({
       'name': name,
       'description': description
     })
 
-print(mongo_collection.count_documents({}))
+print(collection.count_documents({}))
 
-mongo_collection.drop()
-mongo_client.drop_database('mongo')
+collection.drop()
+client.drop_database('database_name')
 
 print(datetime.now() - start)
