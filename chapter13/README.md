@@ -14,7 +14,7 @@ Por isto n√£o considere estes tempos como certos, apenas servem para dar uma id√
 # Elasticsearch
 | 1       | 10000   |
 | ------- | ------- |
-| ? | 0:13:51 |
+| 4:32:51 | 0:13:51 |
 
 # Postgres
 | 1       | 10000   |

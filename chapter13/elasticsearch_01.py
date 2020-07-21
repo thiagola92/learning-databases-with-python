@@ -15,14 +15,12 @@ with open('utils/trash.csv') as file:
 
     client.create(
       index='index_name',
-      id=_id,
+      id=(_id := _id + 1),
       body={
         'name': name,
         'description': description
       }
     )
-
-    _id += 1
 
 print(client.count(index='index_name'))
 

@@ -16,7 +16,7 @@ with open('utils/trash.csv') as file:
 
     package.append({
       '_index': 'index_name',
-      '_id': _id,
+      '_id': (_id := _id + 1),
       '_source': {
         'name': name,
         'description': description
@@ -27,13 +27,11 @@ with open('utils/trash.csv') as file:
       helpers.bulk(client, package, max_retries=10)
       package.clear()
 
-    _id += 1
-
 if package:
   helpers.bulk(client, package, max_retries=10)
 
 print(client.count(index='index_name'))
 
-# client.indices.delete('index_name')
+client.indices.delete('index_name')
 
 print(datetime.now() - start)

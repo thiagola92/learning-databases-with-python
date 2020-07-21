@@ -46,7 +46,7 @@ while len(response['hits']['hits']) > 0:
 cursor.execute("""SELECT COUNT(*) FROM table_name""")
 print(cursor.fetchone())
 
-# cursor.execute("""DROP TABLE table_name""")
+cursor.execute("""DROP TABLE table_name""")
 
 cursor.close()
 postgres_client.commit()
