@@ -1,12 +1,21 @@
-# Docker
-Diferente bancos utilizam diferentes ferramentas para auxiliar visualmente.  
-Escolhi sempre utilizar ferramentas parcialmente/totalmente free e que possuem um imagem docker (por segurança).  
+# GUI
+Exemplos de diversas ferramentas para auxiliar visualmente.  
+(as ferramentas com :star: são as minhas favoritas)  
 
-## Postgres
-[Pgadmin instruction](postgres_study.md)  
+## Docker
+Estas ferramentas podem ser executadas por container e acessadas pelo browser. Isso facilita a desinstalação/remoção dessas ferramentas.  
+* Postgres
+  * [Pgadmin](https://www.pgadmin.org/)
+    * [Instalação](pgadmin_study.md)  
+* MongoDB
+  * [Mongo-express](https://github.com/mongo-express/mongo-express)
+    * [Instalação](mongo_express_study.md.md)
+* Elastic
+  * [Kibana](https://www.elastic.co/kibana) :star:
+    * [Instalação](kibana_study.md)
 
-## MongoDB
-[Mongo-express instruction](mongo_study.md)
-
-## Elastic
-[Kibana instruction](elasticsearch_study.md)  
+## Executable
+Infelizmente nem todas as ferramentas na categoria acima satisfazem minhas expectativas, por isto segue uma lista de outras ferramentas que cheguei a utilizar:  
+* MongoDB
+  * [QueryAssist](https://queryassist.com/) :star:
+  * [Studio 3T](https://studio3t.com/)
