@@ -21,9 +21,9 @@ Os bancos de dados utilizados foram montados utilizando Docker.
   * Upsert (update + insert)
     * Atualizar item se ele existir
     * Inserir item se ele não existir
-* [Capítulo 13](chapter13/)
+* [Capítulo 100](chapter100/)
   * Inserção de grande quantidade de dados no banco
-* [Capítulo 14](chapter14/)
+* [Capítulo 101](chapter101/)
   * Movimentação de grande quantidade de dados entre bancos
   
 # Observation

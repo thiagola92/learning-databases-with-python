@@ -1,6 +1,6 @@
 # GUI
 Exemplos de diversas ferramentas para auxiliar visualmente.  
-(as ferramentas com :star: são as minhas favoritas)  
+(as ferramentas com :star: são as minhas favoritas no momento)  
 
 ## Docker
 Estas ferramentas podem ser executadas por container e acessadas pelo browser. Isso facilita a desinstalação/remoção dessas ferramentas.  
@@ -18,4 +18,3 @@ Estas ferramentas podem ser executadas por container e acessadas pelo browser. I
 Infelizmente nem todas as ferramentas na categoria acima satisfazem minhas expectativas, por isto segue uma lista de outras ferramentas que cheguei a utilizar:  
 * MongoDB
   * [QueryAssist](https://queryassist.com/) :star:
-  * [Studio 3T](https://studio3t.com/)
