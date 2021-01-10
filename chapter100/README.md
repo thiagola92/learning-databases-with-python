@@ -7,19 +7,25 @@ Eu **não** reservei o computador apenas para está tarefa.
 Por isto não considere estes tempos como certos, apenas servem para dar uma idéia.  
 
 # MongoDB
-| 1       | 10000   |
-| ------- | ------- |
-| 0:07:35 | 0:00:33 |
+| 1       | 10000   | async   |
+| ------- | ------- | ------- |
+| 0:07:35 | 0:00:33 | 0:00:45 |
+
+## requirements
+`pip install `  
 
 # Elasticsearch
-| 1       | 10000   |
-| ------- | ------- |
-| 4:32:51 | 0:13:51 |
+| 1       | 10000   | async   |
+| ------- | ------- | ------- |
+| 4:32:51 | 0:13:51 | 0:08:52 |
+
+## requirements
+`pip install elasticsearch[async]`  
 
 # Postgres
-| 1       | 10000   |
-| ------- | ------- |
-| 1:25:42 | 0:01:56 |
+| 1       | 10000   | async   |
+| ------- | ------- | ------- |
+| 1:25:42 | 0:01:56 | ??? |
 
 # Hardware
 * **Operating System**: Ubuntu 20.04 (64-bit)  

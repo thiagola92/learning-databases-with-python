@@ -7,10 +7,7 @@
   * Inserir informação
   * Buscar informação
   * Destruir tabela/collection/index
-
 # Postgres
-[[Postgres code](postgres_study.py)]  
-
 Importante fechar o cursor após toda interação sua com o banco. Deixar um cursor aberto pode travar o acesso para outras pessoas.  
 Quando não especificado o banco de dados na URI, o default é ir para o nome do usuário.  
 É possível especificar o nome do banco no final da URI: `postgres://username:password@127.0.0.1/database_name`  
@@ -27,12 +24,17 @@ cursor.close()
 client.close()
 ```
 
-# MongoDB
-[[MongoDB code](mongodb_study.py)]  
+## requirements
+`pip install psycopg2-binary`  
 
+# MongoDB
 As collections só existem apartir do momento que você insere nelas algum documento.  
 
-# Elasticsearch
-[[Elasticsearch code](mongo_study.py)]  
+## requirements
+`pip install pymongo`  
 
+# Elasticsearch
 Pode se testar se conectou com o banco com `elasticsearch.ping()`, retorna `True` se conectou com sucesso.  
+
+## requirements
+`pip install elasticsearch`  
