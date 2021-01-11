@@ -1,7 +1,7 @@
 import psycopg2
 
-database = psycopg2.connect("postgres://username:password@127.0.0.1")
-cursor = database.cursor()
+client = psycopg2.connect("postgres://username:password@127.0.0.1")
+cursor = client.cursor()
 
 cursor.execute("""
   CREATE TABLE table_name(
@@ -34,5 +34,5 @@ print(cursor.fetchone())
 cursor.execute("""DROP TABLE table_name""")
 
 cursor.close()
-database.commit()
-database.close()
+client.commit()
+client.close()

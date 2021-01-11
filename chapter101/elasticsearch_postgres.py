@@ -40,6 +40,7 @@ while len(response['hits']['hits']) > 0:
    ) for item in response['hits']['hits']]
 
   psycopg2.extras.execute_batch(cursor, insert_sql, package, page_size=len(package))
+  postgres_client.commit()
   
   response = elasticsearch_client.scroll(scroll_id=response['_scroll_id'], scroll='10m')
 

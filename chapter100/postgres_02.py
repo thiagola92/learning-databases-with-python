@@ -5,8 +5,8 @@ from datetime import datetime
 
 start = datetime.now()
 
-database = psycopg2.connect("postgres://username:password@127.0.0.1")
-cursor = database.cursor()
+client = psycopg2.connect("postgres://username:password@127.0.0.1")
+cursor = client.cursor()
 
 cursor.execute("""
   CREATE TABLE table_name(
@@ -29,10 +29,12 @@ with open('utils/trash.csv') as file:
 
     if len(package) >= 10000:
       psycopg2.extras.execute_batch(cursor, insert_sql, package, page_size=len(package))
+      client.commit()
       package.clear()
 
 if package:
   psycopg2.extras.execute_batch(cursor, insert_sql, package, page_size=len(package))
+  client.commit()
 
 cursor.execute("""SELECT COUNT(*) FROM table_name""")
 print(cursor.fetchone())
@@ -40,7 +42,7 @@ print(cursor.fetchone())
 cursor.execute("""DROP TABLE table_name""")
 
 cursor.close()
-database.commit()
-database.close()
+client.commit()
+client.close()
 
 print(datetime.now() - start)

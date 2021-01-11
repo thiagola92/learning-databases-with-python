@@ -30,10 +30,12 @@ for item in collection.find({}):
 
   if len(package) >= 10000:
     psycopg2.extras.execute_batch(cursor, insert_sql, package, page_size=len(package))
+    postgres_client.commit()
     package.clear()
   
 if package:
   psycopg2.extras.execute_batch(cursor, insert_sql, package, page_size=len(package))
+  postgres_client.commit()
 
 cursor.execute("""SELECT COUNT(*) FROM table_name""")
 print(cursor.fetchone())

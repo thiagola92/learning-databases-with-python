@@ -12,7 +12,7 @@ Por isto n√£o considere estes tempos como certos, apenas servem para dar uma id√
 | 0:07:35 | 0:00:33 | 0:00:45 |
 
 ## requirements
-`pip install `  
+`pip install motor`  
 
 # Elasticsearch
 | 1       | 10000   | async   |
@@ -25,7 +25,12 @@ Por isto n√£o considere estes tempos como certos, apenas servem para dar uma id√
 # Postgres
 | 1       | 10000   | async   |
 | ------- | ------- | ------- |
-| 1:25:42 | 0:01:56 | ??? |
+| 1:25:42 | 0:02:02 | 0:06:11 |
+
+## requirements
+<sub>psycopg3 is on development</sub>
+`sudo apt-get install libpq5`  
+`pip install git+https://github.com/psycopg/psycopg3.git#subdirectory=psycopg3`  
 
 # Hardware
 * **Operating System**: Ubuntu 20.04 (64-bit)  
