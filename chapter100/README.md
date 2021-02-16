@@ -7,27 +7,27 @@ Eu **não** reservei o computador apenas para está tarefa.
 Por isto não considere estes tempos como certos, apenas servem para dar uma idéia.  
 
 # MongoDB
-| 1       | 10000   | async   |
-| ------- | ------- | ------- |
-| 0:07:35 | 0:00:33 | 0:00:45 |
+| 1       | 10000   | async   | thread  |
+| ------- | ------- | ------- | ------- |
+| 0:07:35 | 0:00:33 | 0:00:45 | 0:00:50 |
 
-## requirements
+## async requirements
 `pip install motor`  
 
 # Elasticsearch
-| 1       | 10000   | async   |
-| ------- | ------- | ------- |
-| 4:32:51 | 0:13:51 | 0:08:52 |
+| 1       | 10000   | async   | thread  |
+| ------- | ------- | ------- | ------- |
+| 4:32:51 | 0:13:51 | 0:08:52 | 0:10:51 |
 
-## requirements
+## async requirements
 `pip install elasticsearch[async]`  
 
 # Postgres
-| 1       | 10000   | async   |
-| ------- | ------- | ------- |
-| 1:25:42 | 0:02:02 | 0:06:11 |
+| 1       | 10000   | async   | thread  |
+| ------- | ------- | ------- | ------- |
+| 1:25:42 | 0:02:02 | 0:06:11 | 0:01:49 |
 
-## requirements
+## async requirements
 <sub>psycopg3 is on development</sub>
 `sudo apt-get install libpq5`  
 `pip install git+https://github.com/psycopg/psycopg3.git#subdirectory=psycopg3`  
