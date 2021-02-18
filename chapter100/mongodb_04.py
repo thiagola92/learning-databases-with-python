@@ -1,6 +1,7 @@
+import time
 from pymongo import MongoClient
 from datetime import datetime
-from threading import Thread 
+from threading import Thread, Lock
 
 start = datetime.now()
 
@@ -8,7 +9,22 @@ client = MongoClient("mongodb://username:password@127.0.0.1")
 database = client['database_name']
 collection = database['collection_name']
 
+threads_count = 0
+lock = Lock()
 package = []
+
+def send(p):
+  global threads_count
+
+  lock.acquire()
+  threads_count += 1
+  lock.release()
+
+  collection.insert_many(p)
+
+  lock.acquire()
+  threads_count -= 1
+  lock.release()
 
 with open('utils/trash.csv') as file:
   for line in file.readlines():
@@ -20,25 +36,15 @@ with open('utils/trash.csv') as file:
     })
 
     if len(package) >= 10000:
-      t1 = Thread(target=collection.insert_many, args=(package[:2500],))
-      t2 = Thread(target=collection.insert_many, args=(package[2500:5000],))
-      t3 = Thread(target=collection.insert_many, args=(package[5000:7500],))
-      t4 = Thread(target=collection.insert_many, args=(package[7500:],))
-
-      t1.start()
-      t2.start()
-      t3.start()
-      t4.start()
-
-      t1.join()
-      t2.join()
-      t3.join()
-      t4.join()
-
+      while threads_count >= 4: time.sleep(0)
+      Thread(target=send, args=(package[:],), daemon=True).start()
       package.clear()
 
 if package:
   collection.insert_many(package)
+
+while threads_count != 0:
+  pass
 
 print(collection.count_documents({}))
 

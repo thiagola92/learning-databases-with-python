@@ -1,15 +1,30 @@
 from datetime import datetime
-from threading import Thread
+from threading import Thread, Lock
 from elasticsearch import helpers, Elasticsearch
 
 start = datetime.now()
 
-client = Elasticsearch("http://username:password@127.0.0.1:9200")
+client = Elasticsearch("http://username:password@127.0.0.1:9200", timeout=60)
 
 client.indices.create('index_name')
 
+threads_count = 0
+lock = Lock()
 package = []
 _id = 0
+
+def send(p):
+  global threads_count
+
+  lock.acquire()
+  threads_count += 1
+  lock.release()
+
+  helpers.bulk(client, p, max_retries=20)
+
+  lock.acquire()
+  threads_count -= 1
+  lock.release()
 
 with open('utils/trash.csv') as file:
   for line in file.readlines():
@@ -25,25 +40,15 @@ with open('utils/trash.csv') as file:
     })
 
     if len(package) >= 10000:
-      t1 = Thread(target=helpers.bulk, args=(client, package[:2500]), kwargs={'max_retries': 10})
-      t2 = Thread(target=helpers.bulk, args=(client, package[2500:5000]), kwargs={'max_retries': 10})
-      t3 = Thread(target=helpers.bulk, args=(client, package[5000:7500]), kwargs={'max_retries': 10})
-      t4 = Thread(target=helpers.bulk, args=(client, package[7500:]), kwargs={'max_retries': 10})
-
-      t1.start()
-      t2.start()
-      t3.start()
-      t4.start()
-
-      t1.join()
-      t2.join()
-      t3.join()
-      t4.join()
-
+      while threads_count >= 4: pass
+      Thread(target=send, args=(package[:],), daemon=True).start()
       package.clear()
 
 if package:
   helpers.bulk(client, package, max_retries=10)
+
+while threads_count != 0:
+  pass
 
 print(client.count(index='index_name'))
 

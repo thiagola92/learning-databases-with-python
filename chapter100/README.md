@@ -9,7 +9,7 @@ Por isto n√£o considere estes tempos como certos, apenas servem para dar uma id√
 # MongoDB
 | 1       | 10000   | async   | thread  |
 | ------- | ------- | ------- | ------- |
-| 0:07:35 | 0:00:33 | 0:00:45 | 0:00:50 |
+| 0:07:35 | 0:00:33 | 0:00:45 | 0:01:09 |
 
 ## async requirements
 `pip install motor`  
@@ -17,7 +17,7 @@ Por isto n√£o considere estes tempos como certos, apenas servem para dar uma id√
 # Elasticsearch
 | 1       | 10000   | async   | thread  |
 | ------- | ------- | ------- | ------- |
-| 4:32:51 | 0:13:51 | 0:08:52 | 0:10:51 |
+| 4:32:51 | 0:13:51 | 0:08:52 | 0:09:00 |
 
 ## async requirements
 `pip install elasticsearch[async]`  
@@ -25,7 +25,7 @@ Por isto n√£o considere estes tempos como certos, apenas servem para dar uma id√
 # Postgres
 | 1       | 10000   | async   | thread  |
 | ------- | ------- | ------- | ------- |
-| 1:25:42 | 0:02:02 | 0:06:11 | 0:01:49 |
+| 1:25:42 | 0:02:02 | 0:06:11 | 0:01:51 |
 
 ## async requirements
 <sub>psycopg3 is on development</sub>
