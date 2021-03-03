@@ -27,16 +27,14 @@ insert_sql = """
 def send(p):
   global threads_count
 
-  lock.acquire()
-  threads_count += 1
-  lock.release()
+  with lock:
+    threads_count += 1
 
   psycopg2.extras.execute_batch(cursor, insert_sql, p, page_size=len(p))
   client.commit()
 
-  lock.acquire()
-  threads_count -= 1
-  lock.release()
+  with lock:
+    threads_count -= 1
 
 with open('utils/trash.csv') as file:
   for line in file.readlines():

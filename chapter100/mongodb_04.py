@@ -16,15 +16,13 @@ package = []
 def send(p):
   global threads_count
 
-  lock.acquire()
-  threads_count += 1
-  lock.release()
+  with lock:
+    threads_count += 1
 
   collection.insert_many(p)
 
-  lock.acquire()
-  threads_count -= 1
-  lock.release()
+  with lock:
+    threads_count -= 1
 
 with open('utils/trash.csv') as file:
   for line in file.readlines():
