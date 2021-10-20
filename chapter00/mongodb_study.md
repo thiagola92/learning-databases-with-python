@@ -1,7 +1,7 @@
 # MongoDB
 * `sudo docker pull mongo`  
 * `sudo docker network create mongo_network`  
-* `sudo docker run --name="mongo" --network="mongo_network" --env="MONGO_INITDB_ROOT_USERNAME=username" --env="MONGO_INITDB_ROOT_PASSWORD=password" --detach mongo`  
+* `sudo docker run --name="mongo" --network="mongo_network" --env="MONGO_INITDB_ROOT_USERNAME=username" --env="MONGO_INITDB_ROOT_PASSWORD=password" -p 27017:27017 --detach mongo`  
 
 # Error
 
