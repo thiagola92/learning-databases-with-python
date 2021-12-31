@@ -1,31 +1,31 @@
 version: '3'
 
 services:
-        mongo:
-                container_name: mongo
-                image: mongo
-                restart: always
-                ports:
-                        - "27017:27017"
-                environment:
-                        MONGO_INITDB_ROOT_USERNAME: username
-                        MONGO_INITDB_ROOT_PASSWORD: password
-        postgres:
-                container_name: postgres
-                image: postgres
-                restart: always
-                environment:
-                        POSTGRES_USER: username
-                        POSTGRES_PASSWORD: password
-                ports:
-                        - "5432:5432"
-        elasticsearch:
-                container_name: elasticsearch
-                image: elasticsearch:7.5.1
-                ports:
-                        - "9200:9200"
-                        - "9300:9300"
-                environment:
-                        discovery.type: single-node
-                        ELASTIC_USERNAME: username
-                        ELASTIC_PASSWORD: password
+    mongo:
+        container_name: mongo
+        image: mongo
+        restart: always
+        ports:
+            - "27017:27017"
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: username
+            MONGO_INITDB_ROOT_PASSWORD: password
+    postgres:
+        container_name: postgres
+        image: postgres
+        restart: always
+        environment:
+            POSTGRES_USER: username
+            POSTGRES_PASSWORD: password
+        ports:
+            - "5432:5432"
+    elasticsearch:
+        container_name: elasticsearch
+        image: elasticsearch:7.16.2
+        ports:
+            - "9200:9200"
+            - "9300:9300"
+        environment:
+            discovery.type: single-node
+            ELASTIC_USERNAME: username
+            ELASTIC_PASSWORD: password
