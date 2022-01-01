@@ -11,10 +11,16 @@ Por isto n√£o considere estes tempos como certos, apenas servem para dar uma id√
 | ------- | ------- | ------- | ------- |
 | 0:07:35 | 0:00:33 | 0:00:45 | 0:01:09 |
 
+## requirements
+`pip install motor`  
+
 # Elasticsearch
 | 1       | 10000   | async   | thread  |
 | ------- | ------- | ------- | ------- |
 | 4:32:51 | 0:13:51 | 0:08:52 | 0:09:00 |
+
+## requirements
+`pip install elasticsearch[async]`  
 
 # Postgres
 | 1       | 10000   | async   | thread  |

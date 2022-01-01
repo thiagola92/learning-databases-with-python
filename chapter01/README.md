@@ -25,7 +25,7 @@ client.close()
 ```
 
 ## requirements
-`pip install psycopg2-binary`  
+`pip install psycopg`  
 
 # MongoDB
 As collections só existem apartir do momento que você insere nelas algum documento.  
@@ -38,3 +38,9 @@ Pode se testar se conectou com o banco com `elasticsearch.ping()`, retorna `True
 
 ## requirements
 `pip install elasticsearch`  
+
+
+# Meilisearch  
+
+## requirements
+`pip install meilisearch`  
