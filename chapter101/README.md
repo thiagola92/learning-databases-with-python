@@ -9,17 +9,17 @@ Por isto não considere estes tempos como certos, apenas servem para dar uma id�
 # MongoDB to
 | Elasticsearch | Postgres |
 | ------------- | -------- |
-| 0:15:04       | 0:02:01  |
+| -       | -  |
 
 # Elasticsearch to
 | Postgres | MongoDB |
 | -------- | ------- |
-| 0:02:08  | 0:00:53 |
+| -  | - |
 
 # Postgres to
 | Elasticsearch | MongoDB |
 | ------------- | ------- |
-| 0:14:24       | 0:00:53 |
+| -       | - |
 
 # Hardware
 * **Operating System**: Ubuntu 20.04 (64-bit)  
@@ -29,8 +29,8 @@ Por isto não considere estes tempos como certos, apenas servem para dar uma id�
 
 # Details
 * **Database**: Docker Local  
-* **File Size**: 2,1GB  
-* **Documents**: 1500001  
+* **File Size**: 141,6MB  
+* **Documents**: 100001  
 * Columns
   * **name**: Conjunto aleatório de caracteres, ou seja, texto aleatório  
   * **description**: Conjunto de textos aleatórios  

@@ -30,8 +30,8 @@ def random_line():
 
     return line
 
-with open('trash.csv', 'a') as file:
+with open('utils/trash.csv', 'w') as file:
     file.write('name, description\n')
 
-    for i in range(1500000):
+    for i in range(100_000):
         file.write(random_line())

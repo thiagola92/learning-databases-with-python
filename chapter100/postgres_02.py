@@ -1,6 +1,4 @@
 import psycopg
-import psycopg.extras
-
 from datetime import datetime
 
 start = datetime.now()
@@ -28,12 +26,12 @@ with open('utils/trash.csv') as file:
     package.append((name, description))
 
     if len(package) >= 10000:
-      psycopg.extras.execute_batch(cursor, insert_sql, package, page_size=len(package))
+      cursor.executemany(insert_sql, package)
       client.commit()
       package.clear()
 
 if package:
-  psycopg.extras.execute_batch(cursor, insert_sql, package, page_size=len(package))
+  cursor.executemany(insert_sql, package)
   client.commit()
 
 cursor.execute("""SELECT COUNT(*) FROM table_name""")

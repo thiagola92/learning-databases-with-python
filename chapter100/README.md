@@ -1,5 +1,11 @@
-# Single insert VS package insert
-Comparação entre enviar um documento por vez e enviar vários documentos de uma vez.  
+# Comparasion
+Comparação entre diversas maneiras de enviar documento para o banco.  
+- Um documento por vez
+- Um lote de 10 mil documentos por vez
+- Utilizando async
+- Utilizando thread
+
+Em alguns bancos é necessário esperar processarem para os documentos estarem disponíveis e essa espera é inclusa no código.  
 
 # Warning
 Eu **não** executei diversas vezes e fiz uma média para ter uma boa aproximação do tempo que demora.  
@@ -9,7 +15,7 @@ Por isto não considere estes tempos como certos, apenas servem para dar uma id�
 # MongoDB
 | 1       | 10000   | async   | thread  |
 | ------- | ------- | ------- | ------- |
-| 0:07:35 | 0:00:33 | 0:00:45 | 0:01:09 |
+| 0:01:16 | 0:00:03 | - | - |
 
 ## requirements
 `pip install motor`  
@@ -17,7 +23,12 @@ Por isto não considere estes tempos como certos, apenas servem para dar uma id�
 # Elasticsearch
 | 1       | 10000   | async   | thread  |
 | ------- | ------- | ------- | ------- |
-| 4:32:51 | 0:13:51 | 0:08:52 | 0:09:00 |
+| 0:13:43 | 0:00:40 | - | - |
+
+# Meilisearch
+| 1       | 10000   | async   | thread  |
+| ------- | ------- | ------- | ------- |
+| - | 2:20:35 | - | - |
 
 ## requirements
 `pip install elasticsearch[async]`  
@@ -25,7 +36,7 @@ Por isto não considere estes tempos como certos, apenas servem para dar uma id�
 # Postgres
 | 1       | 10000   | async   | thread  |
 | ------- | ------- | ------- | ------- |
-| 1:25:42 | 0:02:02 | 0:06:11 | 0:01:51 |
+| 0:05:00 | 0:00:14 | - | - |
 
 # Hardware
 * **Operating System**: Ubuntu 20.04 (64-bit)  
@@ -35,8 +46,8 @@ Por isto não considere estes tempos como certos, apenas servem para dar uma id�
 
 # Details
 * **Database**: Docker Local  
-* **File Size**: 2,1GB  
-* **Documents**: 1500001  
+* **File Size**: 141,6MB  
+* **Documents**: 100001  
 * Columns
   * **name**: Conjunto aleatório de caracteres, ou seja, texto aleatório  
   * **description**: Conjunto de textos aleatórios  
