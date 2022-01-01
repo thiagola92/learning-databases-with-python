@@ -19,15 +19,6 @@ services:
             POSTGRES_PASSWORD: password
         ports:
             - "5432:5432"
-    pgadmin:
-        container_name: pgadmin
-        image: dpage/pgadmin4
-        restart: always
-        ports:
-            - "15432:80"
-        environment:
-            PGADMIN_DEFAULT_EMAIL: pgadmin
-            PGADMIN_DEFAULT_PASSWORD: pgadmin
     elasticsearch:
         container_name: elasticsearch
         image: elasticsearch:7.16.2
@@ -43,8 +34,8 @@ services:
         image: kibana:7.16.2
         ports:
             - "5601:5601"
-    meili:
-        container_name: meili
+    meilisearch:
+        container_name: meilisearch
         image: getmeili/meilisearch
         ports:
             - "7700:7700"

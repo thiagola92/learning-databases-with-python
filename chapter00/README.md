@@ -21,8 +21,7 @@ Docker normalmente utiliza IPs como `172.x.y.z`, para descobrir o IP do seu cont
 # GUI
 Interfaces gráficas que eu utilizo para auxiliar na visualização dos dados.  
 
-## Postgres
-[Docker](pgadmin_study.md)  
+## Postgres 
 [Beekeeper Studio](https://www.beekeeperstudio.io/)
 
 ## Elastic
