@@ -1,11 +1,11 @@
-import psycopg2
-import psycopg2.extras
+import psycopg
+import psycopg.extras
 
 from datetime import datetime
 
 start = datetime.now()
 
-client = psycopg2.connect("postgres://username:password@127.0.0.1")
+client = psycopg.connect("postgres://username:password@127.0.0.1")
 cursor = client.cursor()
 
 cursor.execute("""
@@ -28,12 +28,12 @@ with open('utils/trash.csv') as file:
     package.append((name, description))
 
     if len(package) >= 10000:
-      psycopg2.extras.execute_batch(cursor, insert_sql, package, page_size=len(package))
+      psycopg.extras.execute_batch(cursor, insert_sql, package, page_size=len(package))
       client.commit()
       package.clear()
 
 if package:
-  psycopg2.extras.execute_batch(cursor, insert_sql, package, page_size=len(package))
+  psycopg.extras.execute_batch(cursor, insert_sql, package, page_size=len(package))
   client.commit()
 
 cursor.execute("""SELECT COUNT(*) FROM table_name""")

@@ -1,7 +1,7 @@
-import psycopg2
+import psycopg
 
 # Connect to database
-client = psycopg2.connect("postgres://username:password@127.0.0.1")
+client = psycopg.connect("postgres://username:password@127.0.0.1")
 cursor = client.cursor()
 
 # Create table

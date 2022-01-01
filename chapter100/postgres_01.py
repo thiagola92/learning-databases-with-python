@@ -1,10 +1,10 @@
-import psycopg2
+import psycopg
 
 from datetime import datetime
 
 start = datetime.now()
 
-client = psycopg2.connect("postgres://username:password@127.0.0.1")
+client = psycopg.connect("postgres://username:password@127.0.0.1")
 cursor = client.cursor()
 
 cursor.execute("""

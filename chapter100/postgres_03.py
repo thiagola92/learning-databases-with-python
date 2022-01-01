@@ -1,12 +1,12 @@
 import asyncio
-import psycopg3
+import psycopg
 
 from datetime import datetime
 
 start = datetime.now()
 
 async def main():
-  client = await psycopg3.AsyncConnection.connect("postgres://username:password@127.0.0.1")
+  client = await psycopg.AsyncConnection.connect("postgres://username:password@127.0.0.1")
   cursor = await client.cursor()
 
   await cursor.execute("""

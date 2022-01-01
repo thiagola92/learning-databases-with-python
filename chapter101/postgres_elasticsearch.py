@@ -1,12 +1,12 @@
-import psycopg2
+import psycopg
 import elasticsearch
-import psycopg2.extras
+import psycopg.extras
 from datetime import datetime
 from elasticsearch import helpers, Elasticsearch
 
 start = datetime.now()
 
-postgres_client = psycopg2.connect("postgres://username:password@127.0.0.1")
+postgres_client = psycopg.connect("postgres://username:password@127.0.0.1")
 elasticsearch_client = Elasticsearch("http://username:password@127.0.0.1:9200")
 
 cursor = postgres_client.cursor()

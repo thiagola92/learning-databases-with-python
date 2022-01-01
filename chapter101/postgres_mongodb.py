@@ -1,11 +1,11 @@
-import psycopg2
-import psycopg2.extras
+import psycopg
+import psycopg.extras
 from pymongo import MongoClient
 from datetime import datetime
 
 start = datetime.now()
 
-postgres_client = psycopg2.connect("postgres://username:password@127.0.0.1")
+postgres_client = psycopg.connect("postgres://username:password@127.0.0.1")
 mongo_client = MongoClient("mongodb://username:password@127.0.0.1")
 
 cursor = postgres_client.cursor()

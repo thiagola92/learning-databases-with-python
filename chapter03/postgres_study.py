@@ -1,6 +1,6 @@
-import psycopg2
+import psycopg
 
-client = psycopg2.connect("postgres://username:password@127.0.0.1")
+client = psycopg.connect("postgres://username:password@127.0.0.1")
 cursor = client.cursor()
 
 cursor.execute("""
