@@ -1,33 +1,32 @@
 import random
 
-def random_text(length=5):
+def random_text(length):
     text = ""
 
-    for i in range(length):
+    for _ in range(length):
         letter = random.randrange(start=97, stop=123)
-        text = text + chr(letter)
+        text += chr(letter)
 
     return text
 
-def random_description(words=20):
+def random_texts(length, words):
     description = ""
 
-    for i in range(words):
-        length = random.randrange(start=3, stop=7)
+    for _ in range(words):
         text = random_text(length)
-        description = description + " " + text
+        description += " " + text
     
     return description
 
 def random_line():
 
     name_length = random.randrange(4, 8)
-    description_length = random.randrange(15, 500)
+    words_length = random.randrange(3, 7)
+    words_quantity = random.randrange(15, 500)
 
-    line = ""
-    line = line + random_text(name_length) + ","
-    line = line + random_description(description_length)
-    line = line + "\n"
+    random_name = random_text(name_length)
+    random_description = random_texts(words_length, words_quantity)
+    line = f"{random_name},{random_description}\n"
 
     return line
 
