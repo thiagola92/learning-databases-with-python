@@ -7,6 +7,7 @@ Os bancos de dados utilizados foram montados utilizando Docker.
 * [Capítulo 0](chapter00/)
   * Para começar a aprender sobre os bancos é recomendado ter o banco na sua máquina local.
     * Utilizaremos o Docker para manter o banco.  
+  * Visualização do banco (GUI)
 * [Capítulo 1](chapter01/)
   * Mínimo de como utilizar um banco
     * Conectar ao banco
@@ -14,10 +15,8 @@ Os bancos de dados utilizados foram montados utilizando Docker.
     * Ler informação
     * Deletar o banco
 * [Capítulo 2](chapter02/)
-  * Visualização do banco (GUI)
-* [Capítulo 3](chapter03/)
   * Atualizar um item do banco
-* [Capítulo 4](chapter04/)
+* [Capítulo 3](chapter03/)
   * Upsert (update + insert)
     * Atualizar item se ele existir
     * Inserir item se ele não existir

@@ -17,3 +17,16 @@ Baixe o arquivo [docker-compose.yaml](docker-compose.yaml), execute o comando `s
 # Obtendo ip
 Docker normalmente utiliza IPs como `172.x.y.z`, para descobrir o IP do seu container utilize:  
 `sudo docker inspect CONTAINER_NAME | grep "IPAddress"`  
+
+# GUI
+Interfaces gráficas que eu utilizo para auxiliar na visualização dos dados.  
+
+## Postgres
+[Docker](pgadmin_study.md)  
+[Beekeeper Studio](https://www.beekeeperstudio.io/)
+
+## Elastic
+[Docker](kibana_study.md)
+
+## MongoDB
+[QueryAssist](https://queryassist.com/)

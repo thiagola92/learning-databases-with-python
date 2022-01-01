@@ -5,7 +5,7 @@ cursor = client.cursor()
 
 cursor.execute("""
   CREATE TABLE table_name(
-    sku integer,
+    sku integer PRIMARY KEY,
     name varchar(255),
     description text,
     category varchar(255)
@@ -15,12 +15,17 @@ cursor.execute("""
 cursor.execute("""
   INSERT INTO table_name
     VALUES(134218478, 'Rb-01 - Robô Aspirador De Pó Fast Clean Bivolt - Mondial', 'Use a tecnologia a seu favor para aproveitar a vida longe da faxina. Conheça mais essa facilidade para o seu lar e deixe tuuuudo limpinho :)', 'eletroportáteis')
+  ON CONFLICT(sku)
+    DO UPDATE SET
+      name = EXCLUDED.name
 """)
 
 cursor.execute("""
-  UPDATE table_name
-    SET name = 'super robô'
-    WHERE sku = 134218478
+  INSERT INTO table_name(sku, name)
+    VALUES('134218478', 'Rb-01 - Robô Aspirador De Pó SUPER Fast Clean Bivolt - Mondial')
+  ON CONFLICT(sku)
+    DO UPDATE SET
+      name = EXCLUDED.name
 """)
 
 cursor.execute("""SELECT * FROM table_name""")
