@@ -19,7 +19,7 @@ Docker normalmente utiliza IPs como `172.x.y.z`, para descobrir o IP do seu cont
 `sudo docker inspect CONTAINER_NAME | grep "IPAddress"`  
 
 # GUI
-Interfaces gráficas que eu utilizo para auxiliar na visualização dos dados.  
+Interfaces gráficas que podem auxiliar na visualização dos dados.  
 
 ## Postgres 
 [Beekeeper Studio](https://www.beekeeperstudio.io/)

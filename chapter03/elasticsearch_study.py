@@ -11,14 +11,15 @@ client.update(index='index_name', id=1, doc_as_upsert=True, doc={
   'category': 'eletroportáteis'
 })
 
+# Upsert information
 client.update(index='index_name', id=1, doc_as_upsert=True, doc={
   'name': 'Rb-01 - Robô Aspirador De Pó SUPER Fast Clean Bivolt - Mondial'
 })
 
-# alternative
-client.update(index='index_name', id=1, script={
-  'source': "ctx._source.name = 'super robô'"
-})
+# Alternative
+# client.update(index='index_name', id=1, script={
+#   'source': "ctx._source.name = 'super robô'"
+# })
 
 p = client.get(index='index_name', id=1)
 print(p)

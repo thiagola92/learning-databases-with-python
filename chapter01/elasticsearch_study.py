@@ -1,3 +1,4 @@
+# pip install elasticsearch
 from elasticsearch import Elasticsearch
 
 # Connect to database

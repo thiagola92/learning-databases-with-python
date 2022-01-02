@@ -12,6 +12,9 @@ client.index('index_name').update_documents([{
   'category': 'eletroportáteis'
 }])
 
+# Upsert information
+#
+# It's already the default behaviour
 client.index('index_name').update_documents([{
     'id': 1,
     'name': 'super robô'

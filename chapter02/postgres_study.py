@@ -17,6 +17,7 @@ cursor.execute("""
     VALUES(134218478, 'Rb-01 - Robô Aspirador De Pó Fast Clean Bivolt - Mondial', 'Use a tecnologia a seu favor para aproveitar a vida longe da faxina. Conheça mais essa facilidade para o seu lar e deixe tuuuudo limpinho :)', 'eletroportáteis')
 """)
 
+# Update information
 cursor.execute("""
   UPDATE table_name
     SET name = 'super robô'
@@ -24,7 +25,8 @@ cursor.execute("""
 """)
 
 cursor.execute("""SELECT * FROM table_name""")
-print(cursor.fetchone())
+p = cursor.fetchone()
+print(p)
 
 cursor.execute("""DROP TABLE table_name""")
 

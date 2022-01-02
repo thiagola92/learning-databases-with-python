@@ -12,6 +12,7 @@ client.index('index_name').add_documents([{
   'category': 'eletroportáteis'
 }])
 
+# Update information
 client.index('index_name').update_documents([{
     'id': 1,
     'name': 'super robô'

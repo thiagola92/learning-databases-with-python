@@ -1,3 +1,4 @@
+# pip install psycopg
 import psycopg
 
 # Connect to database
@@ -22,12 +23,16 @@ cursor.execute("""
 
 # Query information
 cursor.execute("""SELECT * FROM table_name""")
-print(cursor.fetchone())
+p = cursor.fetchone()
+print(p)
 
 # Destroy table
 cursor.execute("""DROP TABLE table_name""")
 
-# Close connection (important)
+# IMPORTANT: Close connection
+#
+# Is dangerous to live a connection open,
+# it could block access from other users to tables
 cursor.close()
 client.commit()
 client.close()

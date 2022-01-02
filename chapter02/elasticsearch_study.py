@@ -11,14 +11,15 @@ client.create(index='index_name', id=1, document={
   'category': 'eletroportáteis'
 })
 
+# Update information
 client.update(index='index_name', id=1, doc={
   'name': 'super robô'
 })
 
-# alternative
-client.update(index='index_name', id=1, script={
-  'source': "ctx._source.name = 'super robô'"
-})
+# Alternative
+# client.update(index='index_name', id=1, script={
+#   'source': "ctx._source.name = 'super robô'"
+# })
 
 p = client.get(index='index_name', id=1)
 print(p)

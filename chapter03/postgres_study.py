@@ -20,6 +20,7 @@ cursor.execute("""
       name = EXCLUDED.name
 """)
 
+# Update information
 cursor.execute("""
   INSERT INTO table_name(sku, name)
     VALUES('134218478', 'Rb-01 - Robô Aspirador De Pó SUPER Fast Clean Bivolt - Mondial')

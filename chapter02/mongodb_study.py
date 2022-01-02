@@ -15,6 +15,7 @@ collection.insert_one({
   }
 })
 
+# Update information
 collection.update_one(
   {'sku': 134218478},
   {

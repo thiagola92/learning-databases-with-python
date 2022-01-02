@@ -1,6 +1,10 @@
+# pip install pymongo
 from pymongo import MongoClient
 
 # Connect to database
+#
+# NOTICE: Databases and Collections are only created
+# when the first document is inserted
 client = MongoClient("mongodb://username:password@127.0.0.1")
 database = client['database_name']
 collection = database['collection_name']
@@ -14,8 +18,8 @@ collection.insert_one({
 })
 
 # Query information
-for i in collection.find({'sku': 134218478}):
-  print(i)
+for doc in collection.find({'sku': 134218478}):
+  print(doc)
 
 # Destroy table
 client.drop_database('database_name')

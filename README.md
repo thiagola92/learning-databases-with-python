@@ -11,8 +11,8 @@ Os bancos de dados utilizados foram montados utilizando Docker.
 * [Capítulo 1](chapter01/)
   * Mínimo de como utilizar um banco
     * Conectar ao banco
-    * Inserir informação
-    * Ler informação
+    * Inserir uma informação
+    * Ler uma informação
     * Deletar o banco
 * [Capítulo 2](chapter02/)
   * Atualizar um item do banco

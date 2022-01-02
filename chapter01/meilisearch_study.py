@@ -1,3 +1,4 @@
+# pip install meilisearch
 from meilisearch import Client
 
 # Connect to database
