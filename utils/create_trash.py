@@ -1,37 +1,47 @@
 import random
 
-def random_text(length):
-    text = ""
+
+def create_word():
+    length = random.randrange(3, 9)
+    word = ""
 
     for _ in range(length):
         letter = random.randrange(start=97, stop=123)
-        text += chr(letter)
+        word += chr(letter)
 
-    return text
+    return word
 
-def random_texts(length, words):
-    description = ""
 
-    for _ in range(words):
-        text = random_text(length)
-        description += " " + text
-    
+def create_words(quantity):
+    words = set()
+
+    while len(words) < quantity:
+        word = create_word()
+        words.add(word)
+
+    return list(words)
+
+
+def create_description(words):
+    quantity_of_words = random.randrange(15, 500)
+    description_words = random.choices(words, k=quantity_of_words)
+    description = " ".join(description_words)
+
     return description
 
-def random_line():
 
-    name_length = random.randrange(4, 8)
-    words_length = random.randrange(3, 7)
-    words_quantity = random.randrange(15, 500)
-
-    random_name = random_text(name_length)
-    random_description = random_texts(words_length, words_quantity)
-    line = f"{random_name},{random_description}\n"
+def create_line(words):
+    name = random.choice(words)
+    description = create_description(words)
+    line = f"{name},{description}\n"
 
     return line
 
-with open('utils/trash.csv', 'w') as file:
-    file.write('name, description\n')
 
-    for i in range(100_000):
-        file.write(random_line())
+with open("utils/trash.csv", "w") as file:
+    lines = 100_000
+    words = create_words(quantity=200_000)
+
+    for _ in range(lines):
+        line = create_line(words)
+        file.write(line)
