@@ -1,6 +1,4 @@
 import psycopg
-import psycopg.extras
-
 from datetime import datetime
 from threading import Thread, Lock
 
@@ -9,12 +7,14 @@ start = datetime.now()
 client = psycopg.connect("postgres://username:password@127.0.0.1")
 cursor = client.cursor()
 
-cursor.execute("""
-  CREATE TABLE table_name(
-    name text,
-    description text
-  )
-""")
+cursor.execute(
+    """
+    CREATE TABLE table_name(
+        name text,
+        description text
+    )
+    """
+)
 
 threads_count = 0
 lock = Lock()
@@ -24,40 +24,43 @@ insert_sql = """
     VALUES(%s, %s)
 """
 
+
 def send(p):
-  global threads_count
+    global threads_count
 
-  with lock:
-    threads_count += 1
+    with lock:
+        threads_count += 1
 
-  psycopg.extras.execute_batch(cursor, insert_sql, p, page_size=len(p))
-  client.commit()
+    psycopg.extras.execute_batch(cursor, insert_sql, p, page_size=len(p))
+    client.commit()
 
-  with lock:
-    threads_count -= 1
+    with lock:
+        threads_count -= 1
 
-with open('utils/trash.csv') as file:
-  for line in file.readlines():
-    name, description = line.split(',')
-    
-    package.append((name, description))
 
-    if len(package) >= 10000:
-      while threads_count >= 4: pass
-      Thread(target=send, args=(package[:],), daemon=True).start()
-      package.clear()
+with open("utils/trash.csv") as file:
+    for line in file.readlines():
+        name, description = line.split(",")
+
+        package.append((name, description))
+
+        if len(package) >= 10000:
+            while threads_count >= 4:
+                pass
+            Thread(target=send, args=(package[:],), daemon=True).start()
+            package.clear()
 
 if package:
-  psycopg.extras.execute_batch(cursor, insert_sql, package, page_size=len(package))
-  client.commit()
+    psycopg.extras.execute_batch(cursor, insert_sql, package, page_size=len(package))
+    client.commit()
 
 while threads_count != 0:
-  pass
+    pass
 
-cursor.execute("""SELECT COUNT(*) FROM table_name""")
+cursor.execute("SELECT COUNT(*) FROM table_name")
 print(cursor.fetchone())
 
-cursor.execute("""DROP TABLE table_name""")
+cursor.execute("DROP TABLE table_name")
 
 cursor.close()
 client.commit()

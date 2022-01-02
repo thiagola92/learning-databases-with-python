@@ -15,7 +15,7 @@ Por isto n√£o considere estes tempos como certos, apenas servem para dar uma id√
 # MongoDB
 | 1       | 10000   | async   | thread  |
 | ------- | ------- | ------- | ------- |
-| 0:01:16 | 0:00:03 | - | - |
+| 0:01:10 | 0:00:03 | - | - |
 
 ## requirements
 `pip install motor`  
@@ -23,12 +23,12 @@ Por isto n√£o considere estes tempos como certos, apenas servem para dar uma id√
 # Elasticsearch
 | 1       | 10000   | async   | thread  |
 | ------- | ------- | ------- | ------- |
-| 0:13:43 | 0:00:40 | - | - |
+| 0:22:55 | 0:00:32 | - | - |
 
 # Meilisearch
 | 1       | 10000   | async   | thread  |
 | ------- | ------- | ------- | ------- |
-| - | 2:20:35 | - | - |
+| - | 0:21:19 | - | - |
 
 ## requirements
 `pip install elasticsearch[async]`  
@@ -36,7 +36,7 @@ Por isto n√£o considere estes tempos como certos, apenas servem para dar uma id√
 # Postgres
 | 1       | 10000   | async   | thread  |
 | ------- | ------- | ------- | ------- |
-| 0:05:00 | 0:00:14 | - | - |
+| 0:07:04 | 0:00:22 | - | - |
 
 # Hardware
 * **Operating System**: Ubuntu 20.04 (64-bit)  
@@ -46,7 +46,7 @@ Por isto n√£o considere estes tempos como certos, apenas servem para dar uma id√
 
 # Details
 * **Database**: Docker Local  
-* **File Size**: 141,6MB  
+* **File Size**: 175 MB  
 * **Documents**: 100001  
 * Columns
   * **name**: Conjunto aleat√≥rio de caracteres, ou seja, texto aleat√≥rio  

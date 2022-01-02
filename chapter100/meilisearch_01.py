@@ -6,30 +6,34 @@ start = datetime.now()
 
 client = Client("http://127.0.0.1:7700", "password")
 
-client.create_index('index_name')
+client.create_index("index_name")
 
 _id = 0
 
-with open('utils/trash.csv') as file:
-  for line in file.readlines():
-    name, description = line.split(',')
+with open("utils/trash.csv") as file:
+    for line in file.readlines():
+        name, description = line.split(",")
 
-    client.index('index_name').add_documents([{
-      'id': (_id := _id + 1),
-      'name': name,
-      'description': description,
-    }])
+        client.index("index_name").add_documents(
+            [
+                {
+                    "id": (_id := _id + 1),
+                    "name": name,
+                    "description": description,
+                }
+            ]
+        )
 
 while True:
-  stats = client.index('index_name').get_stats()
+    stats = client.index("index_name").get_stats()
 
-  if stats['numberOfDocuments'] == _id:
-    break
+    if stats["numberOfDocuments"] == _id:
+        break
 
-  time.sleep(1)
+    time.sleep(1)
 
-print(client.index('index_name').get_stats())
+print(client.index("index_name").get_stats())
 
-client.index('index_name').delete()
+client.index("index_name").delete()
 
 print(datetime.now() - start)

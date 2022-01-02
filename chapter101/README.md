@@ -29,7 +29,7 @@ Por isto não considere estes tempos como certos, apenas servem para dar uma id�
 
 # Details
 * **Database**: Docker Local  
-* **File Size**: 141,6MB  
+* **File Size**: 175 MB  
 * **Documents**: 100001  
 * Columns
   * **name**: Conjunto aleatório de caracteres, ou seja, texto aleatório  
