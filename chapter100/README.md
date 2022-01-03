@@ -28,7 +28,7 @@ Por isto não considere estes tempos como certos, apenas servem para dar uma id�
 # Meilisearch
 | 1       | 10000   | async   | thread  |
 | ------- | ------- | ------- | ------- |
-| - | 0:21:19 | - | - |
+| ♾️ | 0:21:19 | - | - |
 
 ## requirements
 `pip install elasticsearch[async]`  
