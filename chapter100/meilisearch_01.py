@@ -25,7 +25,10 @@ with open("utils/trash.csv") as file:
         )
 
 while True:
-    stats = client.index("index_name").get_stats()
+    try:
+        stats = client.index("index_name").get_stats()
+    except Exception:
+        continue
 
     if stats["numberOfDocuments"] == _id:
         break
