@@ -1,17 +1,4 @@
-# Docker
-Escolha o banco o qual está interessado e monte o container dele
-
-## Postgres
-[Postgres instruction](postgres_study.md)  
-
-## MongoDB
-[Docker instruction](mongodb_study.md)  
-
-## Elastic
-[Docker instruction](elasticsearch_study.md)  
-
 # Docker-compose
-Caso esteja interessado em mais que um, você pode utilizar o docker-compose para monta-los.  
 Baixe o arquivo [docker-compose.yaml](docker-compose.yaml), execute o comando `sudo docker-compose up` no mesmo diretório que o arquivo.  
 
 # Obtendo ip
@@ -22,10 +9,10 @@ Docker normalmente utiliza IPs como `172.x.y.z`, para descobrir o IP do seu cont
 Interfaces gráficas que podem auxiliar na visualização dos dados.  
 
 ## Postgres 
-[Beekeeper Studio](https://www.beekeeperstudio.io/)
+Beekeeper Studio: https://www.beekeeperstudio.io/
 
 ## Elastic
-[Docker](kibana_study.md)
+Kibana: incluso no `docker-compose.yaml`
 
 ## MongoDB
-[QueryAssist](https://queryassist.com/)
+Extensão do VSCode: https://marketplace.visualstudio.com/items?itemName=mongodb.mongodb-vscode

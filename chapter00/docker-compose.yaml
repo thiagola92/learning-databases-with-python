@@ -41,3 +41,12 @@ services:
             - "7700:7700"
         environment:
             MEILI_MASTER_KEY: password
+    scylla:
+        # default user and password: cassandra
+        container_name: scylla
+        image: scylladb/scylla
+        ports:
+            - "10000:10000"
+            - "9042:9042"
+            - "9160:9160"
+            - "9180:9180"
