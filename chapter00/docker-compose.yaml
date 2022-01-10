@@ -41,9 +41,3 @@ services:
             - "7700:7700"
         environment:
             MEILI_MASTER_KEY: password
-    clickhouse:
-        container_name: clickhouse
-        image: yandex/clickhouse-server
-        ports:
-            - "8123:8123"
-            - "9000:9000"
